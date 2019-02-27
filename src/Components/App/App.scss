@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: inherit;
 
-  // Setting everything to 0 so that we can get true margins/ borders
+  // Setting everything to 0 so that we can get true margins/ paddings
 }
 
 html {
@@ -13,7 +13,7 @@ html {
   // Absolute font size of browsers is usually 16px.
   // By setting font-size to 62.5% (10px / 16px), we're setting the font-size to 10px
   // We choose 10px because converting, for example, a 17px attribute would be 1.7rem (17/10). Nice clean numbers
-  // If we stayed with 16px, we'd have to do 17/16, which equals to 1.0625rem. Ugly number.
+  // If we stayed with 16px, we'd have to do 17/16, which equals to 1.0625rem. Ugly number and require a calculator.
   // Now, we're able to set everything to rem instead of pixels, making the entire project more responsive.
 }
 

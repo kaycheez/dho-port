@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.scss';
-import {Carousel} from '../Carousel/Carousel';
+import {CarouselBackground} from '../Carousel/CarouselBackground';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <Carousel />
+        <CarouselBackground />
       </div>
     );
   }
