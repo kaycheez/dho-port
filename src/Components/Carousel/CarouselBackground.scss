@@ -1,3 +1,43 @@
-.carousel {
-    font-size: 1.6rem;
+.carouselImage {
+    height: 100vh;
+    width: 100vw;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        // object-fit: contain;
+        // Contain will fit the entire image, but fill the empty space
+    }
 }
+
+.carousel .carouselImage p.legend { 
+    // Used multiple classes to raise its level of specificity to override carousel's default styling
+    mix-blend-mode: hard-light;
+    background-color: transparent;
+    font-size: 1.8rem;
+    
+}
+
+// .carousel {
+
+//     position: relative;
+
+//     .control-arrow {
+//         position: absolute;
+//     }
+
+//     .control-next {
+
+//         &::before {
+
+//         }
+//     }
+
+//     .control-prev {
+        
+//         &::before {
+
+//         }
+//     }
+// }

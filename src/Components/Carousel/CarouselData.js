@@ -26,7 +26,7 @@ const carouselImages = [
 
 export const carouselMap = carouselImages.map(({image, name}, i) => {
     return (
-        <div key={i}>
+        <div className="carouselImage" key={i}>
             <img src={image} alt={name}/>
             <p className="legend">{name}</p>
         </div>
