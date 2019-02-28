@@ -1,5 +1,24 @@
 .sidebar {
-  background-color: slategray;
-  width: 15vw;
+  color: rgba(193, 202, 214, 1);
+  background-color: rgba(193, 202, 214, 0.2);
+  width: auto;
+  height: auto;
+  padding: 1em 1em;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  height: 4em;
+}
+
+.section {
   height: 100%;
+}
+
+.footer {
+  height: 1em;
 }

@@ -1,5 +1,13 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+
 .App {
   display: flex;
   justify-content: left;
-  height: 100%;
+  height: 100vh;
 }
