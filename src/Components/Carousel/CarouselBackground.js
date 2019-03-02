@@ -18,6 +18,7 @@ export function CarouselBackground () {
                 stopOnHover={false}>
                     {carouselMap}
             </Carousel>
+            <h1>hello</h1>
         </div>
     )
 }
