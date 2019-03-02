@@ -20,7 +20,7 @@ const Sidebar = props => {
         <List title="Video" options={exampleVideoCtgy} />
       </section>
       <footer className='footer'>
-        <h2>Contact</h2>
+        <a href="#">Contact</a>
       </footer>
     </nav>
   )
