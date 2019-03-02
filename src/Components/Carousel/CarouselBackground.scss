@@ -1,43 +1,101 @@
-.carouselImage {
-    height: 100vh;
-    width: 100vw;
+.carousel { 
+    &--container {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+    }
 
-    img {
-        height: 100%;
+    &--cover {
         width: 100%;
-        object-fit: cover;
-        // object-fit: contain;
-        // Contain will fit the entire image, but fill the empty space
+        height: 100%;
+        position: fixed;
+        z-index: 100;
+        background: rgba(0, 0, 0, 0.5);
+        
+        top: 0;
+        left: 0;
+    }
+
+    .carouselImage {
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            // object-fit: contain;
+            // Contain will fit the entire image, but fill the empty space
+        }
+
+        p.legend {
+            position: absolute;
+            z-index: 110;
+
+            mix-blend-mode: hard-light;
+            // background-color: transparent;
+            font-size: 2.4rem;
+        }
+    }
+    
+    .control-arrow {
+        z-index: 101;
+
+        &:after, &:before {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-top: 2px solid #fff;
+            border-right: 2px solid #fff;
+            content: ''; 
+        }
+    }
+
+    .control-prev {
+        /* left: 0;  */
+        left: 35vw;
+        width: 10vw;
+    
+        &:after {
+            transform: rotate(-135deg);
+            margin-left: -2.3rem;
+        }
+    
+        &:before {
+            transform: rotate(-135deg);
+        }
+    
+        &:hover {
+            animation: bounceLeft  .6s infinite alternate;
+        }
+    }
+
+    .control-next {
+        right: 35vw;
+        width: 10vw;
+    
+        &:after {
+            transform: rotate(45deg);
+            margin-left: -2.3rem;
+        }
+        
+        &:before {
+            transform: rotate(45deg);
+        }
+    
+        &:hover {
+            animation: bounceRight  .6s infinite alternate;
+        }
     }
 }
 
-.carousel .carouselImage p.legend { 
-    // Used multiple classes to raise its level of specificity to override carousel's default styling
-    mix-blend-mode: hard-light;
-    background-color: transparent;
-    font-size: 1.8rem;
-    
+@keyframes bounceLeft {
+    0% {transform: translateX(0)}
+    100% {transform: translateX(-2rem)}
 }
 
-// .carousel {
-
-//     position: relative;
-
-//     .control-arrow {
-//         position: absolute;
-//     }
-
-//     .control-next {
-
-//         &::before {
-
-//         }
-//     }
-
-//     .control-prev {
-        
-//         &::before {
-
-//         }
-//     }
-// }
+@keyframes bounceRight {
+    0% {transform: translateX(0)}
+    100% {transform: translateX(2rem)}
+}
