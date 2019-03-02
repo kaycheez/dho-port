@@ -26,9 +26,12 @@ const carouselImages = [
 
 export const carouselMap = carouselImages.map(({image, name}, i) => {
     return (
-        <div className="carouselImage" key={i}>
-            <img src={image} alt={name}/>
-            <p className="legend">{name}</p>
-        </div>
+        <>
+            <div className="carouselImage" key={i}>
+                <img src={image} alt={name}/>
+                {/* <div className='carousel--cover'/> */}
+                <p className="legend">{name}</p>
+            </div>
+        </>
     )
 })

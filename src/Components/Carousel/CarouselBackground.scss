@@ -5,16 +5,16 @@
         width: 100vw;
     }
 
-    &--cover {
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        z-index: 100;
-        background: rgba(0, 0, 0, 0.5);
+    // &--cover {
+    //     width: 100%;
+    //     height: 100%;
+    //     position: absolute;
+    //     z-index: 100;
+    //     background: rgba(0, 0, 0, 0.5);
         
-        top: 0;
-        left: 0;
-    }
+    //     top: 0;
+    //     left: 0;
+    // }
 
     .carouselImage {
         height: 100vh;
@@ -25,23 +25,32 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
+            filter: brightness(0.4);
             // object-fit: contain;
             // Contain will fit the entire image, but fill the empty space
         }
 
         p.legend {
-            position: absolute;
-            z-index: 110;
-
             mix-blend-mode: hard-light;
-            // background-color: transparent;
+            background-color: transparent;
             font-size: 2.4rem;
+            cursor: pointer; 
         }
     }
-    
-    .control-arrow {
-        z-index: 101;
 
+    // .slide {
+    //     p.legend {
+    //         position: absolute;
+    //         z-index: 101;
+
+    //         mix-blend-mode: hard-light;
+    //         // background-color: transparent;
+    //         font-size: 2.4rem;
+    //         cursor: pointer; 
+    //     }
+    // }
+
+    .control-arrow {
         &:after, &:before {
             display: inline-block;
             width: 15px;
@@ -53,7 +62,6 @@
     }
 
     .control-prev {
-        /* left: 0;  */
         left: 35vw;
         width: 10vw;
     

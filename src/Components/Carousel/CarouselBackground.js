@@ -7,17 +7,17 @@ import '../../../node_modules/react-responsive-carousel/lib/styles/carousel.min.
 export function CarouselBackground () {
     return (
         <div className='carousel--container'>
-            <div className='carousel--cover'/>
-                <Carousel 
-                    showArrows={true} 
-                    showStatus={false} 
-                    showThumbs={false} 
-                    showIndicators={false}
-                    infiniteLoop={true} 
-                    autoPlay={false} 
-                    interval={4000} >
-                        {carouselMap}
-                </Carousel>
+            <Carousel 
+                showArrows={true} 
+                showStatus={false} 
+                showThumbs={false} 
+                showIndicators={false}
+                infiniteLoop={true} 
+                autoPlay={true} 
+                interval={4000} 
+                stopOnHover={false}>
+                    {carouselMap}
+            </Carousel>
         </div>
     )
 }
