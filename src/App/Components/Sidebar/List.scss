@@ -1,14 +1,12 @@
 .category {
   display: block;
   cursor: pointer;
-  margin-bottom: 2em;
-  background: rgba(255,255,255,0);
 
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+  text-shadow: rgba(0, 0, 0, .2) 0em .5em .3em;
 
   &:hover {
-    transform: translateY(-.3rem);
-    box-shadow: 0 2rem 3rem rgba(0, 0, 0, .2);
+    transform: translateY(-.2rem);
+    text-shadow: rgba(0, 0, 0, .2) 0em .7em .5em;;  
 
     &::after {
       transform: scaleX(1.4) scaleY(1.6);
