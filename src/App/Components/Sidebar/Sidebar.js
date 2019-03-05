@@ -9,7 +9,7 @@ const Sidebar = props => {
   const mapList = (options) => {
     return options.map((option, i) => {
       return (
-        <a href="#" className={styles.option} key={i}>{option}</a>
+        <a href="#" className={`${styles.option} ${styles.hoveringButton}`} key={i}>{option}</a>
       )
     })
   }
@@ -18,7 +18,7 @@ const Sidebar = props => {
     return (
       <Fragment>
         <button className={styles.categoryContainer}>
-          <span className={styles.category}>{category}</span>
+          <span className={`${styles.category} ${styles.hoveringButton}`}>{category}</span>
           <div className={styles.dropdown}>
             {mapList(options)}
           </div>
@@ -30,15 +30,15 @@ const Sidebar = props => {
 
   return (
     <nav className={styles.sidebar}>
-      <header className={styles.header}>
+      <header className={`${styles.header}`}>
         <h1><a href="#">VISUALS BY DAVID HO</a></h1>
       </header>
       <section className={styles.section}>
         {renderCategory('Photo', examplePhotoCtgy)}
         {renderCategory('Video', exampleVideoCtgy)}
       </section>
-      <footer className={styles.footer}>
-        <a href="#">Contact</a>
+      <footer className={`${styles.footer}`}>
+        <a href="#" >Contact</a>
       </footer>
     </nav>
   )
