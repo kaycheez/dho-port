@@ -9,16 +9,16 @@ export function CarouselBackground () {
     const NextArrow = (props) => {
         return (
             <div {...props} className='carousel__arrow carousel__arrow--next'>
-                <a class='animated-arrow' href='https://google.com'>
-                    <span class='the-arrow -left'>
-                        <span class='shaft'/>
+                <a className='animated-arrow' href='https://google.com'>
+                    <span className='the-arrow -left'>
+                        <span className='shaft'/>
                     </span>
-                    <span class='main'>
-                        <span class='text'>
-                            Next
+                    <span className='main'>
+                        <span className='text'>
+                            {/* Next */}
                         </span>
-                        <span class='the-arrow -right'>
-                            <span class='shaft'/>
+                        <span className='the-arrow -right'>
+                            <span className='shaft'/>
                         </span>
                     </span>
                 </a>
@@ -29,16 +29,16 @@ export function CarouselBackground () {
     const PrevArrow = (props) => {
         return (
             <div {...props} className='carousel__arrow carousel__arrow--prev'>
-                <a class='animated-arrow' href='https://google.com'>
-                    <span class='the-arrow -left'>
-                        <span class='shaft'/>
+                <a className='animated-arrow' href='https://google.com'>
+                    <span className='the-arrow -left'>
+                        <span className='shaft'/>
                     </span>
-                    <span class='main'>
-                        <span class='text'>
-                            Previous
+                    <span className='main'>
+                        <span className='text'>
+                            {/* Previous */}
                         </span>
-                        <span class='the-arrow -right'>
-                            <span class='shaft'/>
+                        <span className='the-arrow -right'>
+                            <span className='shaft'/>
                         </span>
                     </span>
                 </a>
@@ -47,9 +47,11 @@ export function CarouselBackground () {
     }
 
     const settings = {      
-        fade: true,
+        // fade: true,
         infinite: true,
-        speed: 500,
+        autoplay: true,
+        autoplaySpeed: 4700,
+        pauseOnHover: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: <NextArrow />,

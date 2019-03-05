@@ -5,6 +5,7 @@
     &__container {
         position: relative;
         font-family: 'Playfair Display', serif;
+        font-family: normal;
     }
 
     &__arrow {
@@ -13,21 +14,26 @@
         height: 3vmin;
         width: 3vmin;
         cursor: pointer;
-        bottom: 5vh;
+        bottom: 10vh;
 
         &--next {
-            right: 40vw;
+            right: 38vw;
             @include arrow;
+
+            .text {
+                height: 5vh;
+            }
         }
 
         &--prev {
-            left: 40vw;
+            left: 38vw;
             @include arrow;
             transform: scaleX(-1);
             // Invert the whole animation, but text 'Previous' is inverted too
 
             .text {
                 transform: scaleX(-1);
+                height: 5vh;
                 // Invert the text, 'Previous' so it's back to normal
             }
         }
@@ -36,12 +42,26 @@
     &__image {
         width: 100vw;
         height: 100vh;
+        position: relative;
 
         &-item {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: brightness(40%)
+        }
+
+        &-caption {
+            position: absolute;
+            color: gray;
+            font-style: italic;
+            font-size: 3rem;
+            display: inline-block;
+            text-decoration: none;
+
+            bottom: 10vh;
+            left: 50vw;
+            transform: translate(-50%, 50%);
         }
     }
 }
