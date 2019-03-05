@@ -1,109 +1,17 @@
-.carousel { 
-    &--container {
-        position: relative;
-        height: 100vh;
-        width: 100vw;
+.carousel {
+
+    &__arrow {
+        background-color: pink;
     }
 
-    // &--cover {
-    //     width: 100%;
-    //     height: 100%;
-    //     position: absolute;
-    //     z-index: 100;
-    //     background: rgba(0, 0, 0, 0.5);
-        
-    //     top: 0;
-    //     left: 0;
-    // }
-
-    .carouselImage {
-        height: 100vh;
+    &__image {
         width: 100vw;
-        position: relative;
+        height: 100vh;
 
-        img {
-            height: 100%;
+        &-item {
             width: 100%;
+            height: 100%;
             object-fit: cover;
-            filter: brightness(0.4);
-            // object-fit: contain;
-            // Contain will fit the entire image, but fill the empty space
-        }
-
-        p.legend {
-            mix-blend-mode: hard-light;
-            background-color: transparent;
-            font-size: 2.4rem;
-            cursor: pointer; 
         }
     }
-
-    // .slide {
-    //     p.legend {
-    //         position: absolute;
-    //         z-index: 101;
-
-    //         mix-blend-mode: hard-light;
-    //         // background-color: transparent;
-    //         font-size: 2.4rem;
-    //         cursor: pointer; 
-    //     }
-    // }
-
-    .control-arrow {
-        &:after, &:before {
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            border-top: 2px solid #fff;
-            border-right: 2px solid #fff;
-            content: ''; 
-        }
-    }
-
-    .control-prev {
-        left: 35vw;
-        width: 10vw;
-    
-        &:after {
-            transform: rotate(-135deg);
-            margin-left: -2.3rem;
-        }
-    
-        &:before {
-            transform: rotate(-135deg);
-        }
-    
-        &:hover {
-            animation: bounceLeft  .6s infinite alternate;
-        }
-    }
-
-    .control-next {
-        right: 35vw;
-        width: 10vw;
-    
-        &:after {
-            transform: rotate(45deg);
-            margin-left: -2.3rem;
-        }
-        
-        &:before {
-            transform: rotate(45deg);
-        }
-    
-        &:hover {
-            animation: bounceRight  .6s infinite alternate;
-        }
-    }
-}
-
-@keyframes bounceLeft {
-    0% {transform: translateX(0)}
-    100% {transform: translateX(-2rem)}
-}
-
-@keyframes bounceRight {
-    0% {transform: translateX(0)}
-    100% {transform: translateX(2rem)}
 }
