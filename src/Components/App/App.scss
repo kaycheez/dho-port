@@ -4,6 +4,8 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   // Setting everything to 0 so that we can get true margins/ paddings
 }

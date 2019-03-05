@@ -1,22 +1,47 @@
 import React from 'react';
 import {carouselData} from './CarouselData';
 import './CarouselBackground.scss';
+import './CarouselArrow.scss'
 import Slider from 'react-slick';
 
 export function CarouselBackground () {
 
     const NextArrow = (props) => {
         return (
-            <div {...props} className='carousel__arrow carousel__next'>
-                Next
-            </div>
+            <div {...props} className='carousel__arrow carousel__arrow--next'>
+                <a class='animated-arrow' href='https://google.com'>
+                    <span class='the-arrow -left'>
+                        <span class='shaft'/>
+                    </span>
+                    <span class='main'>
+                        <span class='text'>
+                            Next
+                        </span>
+                        <span class='the-arrow -right'>
+                            <span class='shaft'/>
+                        </span>
+                    </span>
+                </a>
+            </div>  
         )
     }
 
     const PrevArrow = (props) => {
         return (
-            <div {...props} className='carousel__arrow carousel__prev'>
-                Previous
+            <div {...props} className='carousel__arrow carousel__arrow--prev'>
+                <a class='animated-arrow' href='https://google.com'>
+                    <span class='the-arrow -left'>
+                        <span class='shaft'/>
+                    </span>
+                    <span class='main'>
+                        <span class='text'>
+                            Previous
+                        </span>
+                        <span class='the-arrow -right'>
+                            <span class='shaft'/>
+                        </span>
+                    </span>
+                </a>
             </div>
         )
     }
@@ -27,7 +52,6 @@ export function CarouselBackground () {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // arrows: false,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />
     }
