@@ -1,0 +1,66 @@
+.sidebar {
+  color: rgb(141, 148, 156);
+  background-color: rgba(193, 202, 214, 0.2);
+  width: auto;
+  height: auto;
+  padding: 1em 1em;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  height: 4em;
+}
+
+.section {
+  height: 100%;
+}
+
+.footer {
+  height: 1em;
+}
+
+//on hover, font increase
+//more space b/w cats 
+
+.categoryContainer {
+  display: block;
+
+  transition: all .2s;
+
+  &:hover {
+    transform: scale(1.1);
+    text-shadow: rgba(0, 0, 0, .2) 0em .1em 1em;;  
+  }
+
+  &:focus {
+    .dropdown {
+      display: block;
+    }
+  }
+
+  &:blur {
+    .dropdown {
+      display: none;
+    }
+  }
+}
+
+.category {
+  font-size: 1.5em;
+  display: block;
+  cursor: pointer;
+  text-shadow: rgba(0, 0, 0, .2) 0em 0em .5em;
+}
+
+.dropdown {
+  display: none;
+}
+
+.option {
+  display: block;
+  cursor: pointer;
+}

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.scss';
-import Sidebar from '../Sidebar/Sidebar';
+import styles from './App.module.scss';
+import Sidebar from './Components/Sidebar/Sidebar';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className={styles.app}>
         <Sidebar />
       </div>
     );
