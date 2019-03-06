@@ -91,3 +91,9 @@
 
   100% { display: none; }
 }
+
+@keyframes slideIn {
+  to {
+    width: 100%
+  }
+}
