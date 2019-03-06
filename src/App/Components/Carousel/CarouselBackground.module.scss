@@ -1,0 +1,69 @@
+@import './CarouselArrow.module.scss';
+
+.carousel {
+
+    &__container {
+        position: relative;
+        font-family: 'Playfair Display', serif;
+        font-family: normal;
+    }
+
+    &__arrow {
+        position: absolute;
+        z-index: 100;
+        height: 3vmin;
+        width: 3vmin;
+        cursor: pointer;
+        bottom: 10vh;
+
+        &Next {
+            right: 38vw;
+            @include arrow;
+
+            .text {
+                height: 5vh;
+            }
+        }
+
+        &Prev {
+            left: 38vw;
+            @include arrow;
+            transform: scaleX(-1);
+            // Invert the whole animation, but text 'Previous' is inverted too
+
+            .text {
+                transform: scaleX(-1);
+                height: 5vh;
+                // Invert the text, 'Previous' so it's back to normal
+            }
+        }
+    }
+
+    &__image {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+
+        &Item {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(40%)
+        }
+
+        &Caption {
+            font-family: 'Playfair Display', serif;
+            font-family: normal;
+            position: absolute;
+            color: gray;
+            font-style: italic;
+            font-size: 3rem;
+            display: inline-block;
+            text-decoration: none;
+
+            bottom: 10vh;
+            left: 50vw;
+            transform: translate(-50%, 50%);
+        }
+    }
+}
