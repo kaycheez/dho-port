@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './CarouselBackground.module.scss';
 
 import corporate from '../../assets/images/corporate.jpg';
 import events from '../../assets/images/event.jpg';
@@ -32,10 +33,10 @@ const carouselImages = [
 
 export const carouselData = carouselImages.map(({image, name, path}, i) => {
     return (
-        <div className='carousel__image' key={i}>
-            <img className='carousel__image-item' alt={name} src={image}/>
+        <div className={styles.carousel__image} key={i}>
+            <img className={styles.carousel__imageItem} alt={name} src={image}/>
             <Link to={path}>
-                <h1 className='carousel__image-caption'>{name}</h1>
+                <h1 className={styles.carousel__imageCaption}>{name}</h1>
             </Link>
         </div>
     )

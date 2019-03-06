@@ -2,58 +2,9 @@
 
 // -------------- THE ARROW -------------- //
 @mixin arrow {
-    .the-arrow {
+    .the_arrow {
         width: $shaft-width;
         transition: all 0.2s;
-    
-        &.-left {
-            position: absolute;
-            top: 60%;
-            left: 0;
-
-            > .shaft {
-            width: 0;
-            background-color: $gray;
-            
-            &:before,
-            &:after {
-                width: 0;
-                background-color: $gray;
-            }
-
-            &:before {
-                transform: rotate(0);
-            }
-
-            &:after {
-                transform: rotate(0);
-            }
-            }
-        }
-    
-        &.-right {
-            top: 3px;
-            
-            > .shaft {
-            width: $shaft-width;
-            transition-delay: 0.2s;
-
-            &:before,
-            &:after { 
-                width: $arrow-head-width;
-                transition-delay: 0.3s;
-                transition: all 0.5s;
-            }
-            
-            &:before {
-                transform: rotate(40deg);
-            }
-            
-            &:after {
-                transform: rotate(-40deg);
-            }
-            }
-        }
 
         > .shaft {
             background-color: $gray;
@@ -87,9 +38,58 @@
         }
     }
 
+    .the_arrow._left {
+        position: absolute;
+        top: 60%;
+        left: 0;
+
+        > .shaft {
+            width: 0;
+            background-color: $gray;
+            
+            &:before,
+            &:after {
+                width: 0;
+                background-color: $gray;
+            }
+
+            &:before {
+                transform: rotate(0);
+            }
+
+            &:after {
+                transform: rotate(0);
+            }
+        }
+    }
+
+    .the_arrow._right {
+        top: 3px;
+        
+        > .shaft {
+        width: $shaft-width;
+        transition-delay: 0.2s;
+
+        &:before,
+        &:after { 
+            width: $arrow-head-width;
+            transition-delay: 0.3s;
+            transition: all 0.5s;
+        }
+        
+        &:before {
+            transform: rotate(40deg);
+        }
+        
+        &:after {
+            transform: rotate(-40deg);
+        }
+        }
+    }
+
     // Animated Arrow Button
 
-    .animated-arrow {
+    .animated_arrow {
         display: inline-block;
         color: $gray;
         font-size: 2em;
@@ -101,7 +101,7 @@
         &:hover {
             color: $white;
             
-            > .the-arrow.-left {
+            > .the_arrow._left {
             > .shaft {
                 width: $shaft-width;
                 transition-delay: 0.1s;
@@ -127,7 +127,7 @@
             > .main {
             transform: translateX($shaft-width + $text-arrow-space);
             
-            > .the-arrow.-right {
+            > .the_arrow._right {
                 > .shaft {
                 width: 0;
                 transform: translateX(200%);
@@ -162,7 +162,7 @@
             line-height: 1;
             }
             
-            > .the-arrow {
+            > .the_arrow {
             position: relative;
             }
         }

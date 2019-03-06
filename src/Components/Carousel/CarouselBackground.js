@@ -1,24 +1,24 @@
 import React from 'react';
 import {carouselData} from './CarouselData';
-import './CarouselBackground.scss';
-import './CarouselArrow.scss'
+import styles from './CarouselBackground.module.scss';
+// import styles from './CarouselArrow.module.scss'
 import Slider from 'react-slick';
 
 export function CarouselBackground () {
 
     const NextArrow = (props) => {
         return (
-            <div {...props} className='carousel__arrow carousel__arrow--next'>
-                <a className='animated-arrow' href='https://google.com'>
-                    <span className='the-arrow -left'>
-                        <span className='shaft'/>
+            <div {...props} className={`${styles.carousel__arrow} ${styles.carousel__arrowNext}`}>
+                <a className={styles.animated_arrow} href='https://google.com'>
+                    <span className={`${styles.the_arrow} ${styles._left}`}>
+                        <span className={styles.shaft}/>
                     </span>
-                    <span className='main'>
-                        <span className='text'>
+                    <span className={styles.main}>
+                        <span className={styles.text}>
                             {/* Next */}
                         </span>
-                        <span className='the-arrow -right'>
-                            <span className='shaft'/>
+                        <span className={`${styles.the_arrow} ${styles._right}`}>
+                            <span className={styles.shaft}/>
                         </span>
                     </span>
                 </a>
@@ -28,17 +28,17 @@ export function CarouselBackground () {
 
     const PrevArrow = (props) => {
         return (
-            <div {...props} className='carousel__arrow carousel__arrow--prev'>
-                <a className='animated-arrow' href='https://google.com'>
-                    <span className='the-arrow -left'>
-                        <span className='shaft'/>
+            <div {...props} className={`${styles.carousel__arrow} ${styles.carousel__arrowPrev}`}>
+                <a className={styles.animated_arrow} href='https://google.com'>
+                    <span className={`${styles.the_arrow} ${styles._left}`}>
+                        <span className={styles.shaft}/>
                     </span>
-                    <span className='main'>
-                        <span className='text'>
+                    <span className={styles.main}>
+                        <span className={styles.text}>
                             {/* Previous */}
                         </span>
-                        <span className='the-arrow -right'>
-                            <span className='shaft'/>
+                        <span className={`${styles.the_arrow} ${styles._right}`}>
+                            <span className={styles.shaft}/>
                         </span>
                     </span>
                 </a>
