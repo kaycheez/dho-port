@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.scss';
+import styles from './App.module.scss';
 import { CarouselBackground } from '../Carousel/CarouselBackground';
 import MappedRoutes from '../routes/mappedRoutes';
 import routes from '../routes/mappedRoutes';
