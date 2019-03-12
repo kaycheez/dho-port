@@ -1,6 +1,7 @@
 import React from 'react';
 import {carouselData} from './CarouselData';
 import styles from './CarouselBackground.module.scss';
+import './CarouselFix.scss';
 // import styles from './CarouselArrow.module.scss'
 import Slider from 'react-slick';
 
@@ -49,7 +50,7 @@ export function CarouselBackground () {
     const settings = {      
         // fade: true,
         infinite: true,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 4700,
         pauseOnHover: false,
         slidesToShow: 1,
@@ -59,7 +60,7 @@ export function CarouselBackground () {
     }
 
     return (
-        <div className='carousel__container'>
+        <div className='carousel__container' id='carousel__Fix'>
             <Slider {...settings}>
                 {carouselData}
             </Slider>
