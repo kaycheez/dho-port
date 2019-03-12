@@ -9,7 +9,7 @@ const Sidebar = props => {
   const mapList = (options) => {
     return options.map((option, i) => {
       return (
-        <a href="#" className={`${styles.option} ${styles.hoveringButton}`} key={i}>{option}</a>
+        <a href="#" className={`${styles.hoveringButton}`} key={i}>{option}</a>
       )
     })
   }
@@ -31,14 +31,14 @@ const Sidebar = props => {
   return (
     <nav className={styles.sidebar}>
       <header className={`${styles.header}`}>
-        <h1><a href="#">VISUALS BY DAVID HO</a></h1>
+        <h1><a href="#" className={`${styles.hoveringButton}`}>VISUALS BY DAVID HO</a></h1>
       </header>
       <section className={styles.section}>
         {renderCategory('Photo', examplePhotoCtgy)}
         {renderCategory('Video', exampleVideoCtgy)}
       </section>
       <footer className={`${styles.footer}`}>
-        <a href="#" >Contact</a>
+        <a href="#" className={`${styles.hoveringButton}`}>Contact</a>
       </footer>
     </nav>
   )

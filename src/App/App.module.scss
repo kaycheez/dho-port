@@ -9,25 +9,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.carouselApp {
-  position: relative;
-}
-
-.sidebarApp {
-  all: initial;
-  * {
-    all: unset;
-  }
-
-  display: flex;
-  justify-content: left;
-  height: 100vh;
-  
-  bottom: 0;
-  position: absolute;
-  z-index: 1000;
-}
-
 html {
   font-size: 62.5%;
 }
@@ -36,4 +17,20 @@ body {
   box-sizing: border-box;
   // Setting box-sizing to border-box so that padding & margins aren't included in the sizing
   line-height: 1.7
+}
+
+.app {
+  height: 100vh;
+}
+
+.carouselApp {
+  position: relative;
+}
+
+.sidebarApp {
+  display: flex;
+  height: 100%;
+  bottom: 0;
+  position: absolute;
+  z-index: 1000;
 }

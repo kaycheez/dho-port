@@ -9,7 +9,7 @@ import { Switch } from 'react-router-dom';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className={styles.app}>
         <div className={styles.carouselApp}>
           <CarouselBackground>
               <Switch>
