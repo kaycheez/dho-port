@@ -12,12 +12,9 @@
 html {
   font-size: 62.5%;
   visibility: visible;
-  opacity: 1;
-  animation: showUp 1.5s;
-  animation-delay: .5s;
-  animation-fill-mode: both;
   // Visibility hidden and opacity 0 is found in index.html between style tag.
   // Hidden and 0 will load first, hiding the flicker of unstyled content (FOUC) then visible and 1 will load after
+  animation: showUp 1.3s both;
 }
 
 body {
