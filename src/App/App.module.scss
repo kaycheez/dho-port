@@ -11,6 +11,11 @@
 
 html {
   font-size: 62.5%;
+  visibility: visible;
+  // Visibility hidden and opacity 0 is found in index.html between style tag.
+  // Hidden and 0 will load first, hiding the flicker of unstyled content (FOUC) then visible and 1 will load after
+  animation: showUp 1.3s both;
+  // opacity: 1;
 }
 
 body {
@@ -33,4 +38,14 @@ body {
   bottom: 0;
   position: absolute;
   z-index: 1000;
+}
+
+@keyframes showUp {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

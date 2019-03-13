@@ -67,3 +67,12 @@
         }
     }
 }
+
+.link {
+    border: 5rem dashed transparent;
+    bottom: -2vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 100000;
+}

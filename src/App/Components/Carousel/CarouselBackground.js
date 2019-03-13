@@ -1,8 +1,6 @@
 import React from 'react';
 import {carouselData} from './CarouselData';
 import styles from './CarouselBackground.module.scss';
-import './CarouselFix.scss';
-// import styles from './CarouselArrow.module.scss'
 import Slider from 'react-slick';
 
 export function CarouselBackground () {
@@ -16,7 +14,6 @@ export function CarouselBackground () {
                     </span>
                     <span className={styles.main}>
                         <span className={styles.text}>
-                            {/* Next */}
                         </span>
                         <span className={`${styles.the_arrow} ${styles._right}`}>
                             <span className={styles.shaft}/>
@@ -36,7 +33,6 @@ export function CarouselBackground () {
                     </span>
                     <span className={styles.main}>
                         <span className={styles.text}>
-                            {/* Previous */}
                         </span>
                         <span className={`${styles.the_arrow} ${styles._right}`}>
                             <span className={styles.shaft}/>
@@ -48,10 +44,10 @@ export function CarouselBackground () {
     }
 
     const settings = {      
-        // fade: true,
+        fade: true,
         infinite: true,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 3700,
         pauseOnHover: false,
         slidesToShow: 1,
         slidesToScroll: 1,

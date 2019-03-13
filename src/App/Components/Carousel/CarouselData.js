@@ -35,9 +35,8 @@ export const carouselData = carouselImages.map(({image, name, path}, i) => {
     return (
         <div className={styles.carousel__image} key={i}>
             <img className={styles.carousel__imageItem} alt={name} src={image}/>
-            <Link to={path}>
                 <h1 className={styles.carousel__imageCaption}>{name}</h1>
-            </Link>
+                <Link to={path} className={styles.link}/>
         </div>
     )
 })
