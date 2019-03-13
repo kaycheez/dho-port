@@ -1,7 +1,6 @@
 import React from 'react';
 import {carouselData} from './CarouselData';
 import styles from './CarouselBackground.module.scss';
-import './CarouselFix.scss';
 import Slider from 'react-slick';
 
 export function CarouselBackground () {
