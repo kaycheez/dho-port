@@ -2,12 +2,25 @@ import React from 'react';
 import styles from './App.module.scss';
 import Sidebar from './Components/Sidebar/Sidebar';
 import { CarouselBackground } from './Components/Carousel/CarouselBackground';
-import { Switch } from 'react-router-dom';
+// import { Switch } from 'react-router-dom';
+import mappedRoutes from './routes/mappedRoutes';
+import { Route, Switch } from 'react-router-dom';
+import routes from './routes/routes'
 
 const App = () => {
   return (
     <div className={styles.app}>
-      <CarouselBackground />
+      <Switch>
+        {
+          routes.map(e =>
+            <Route
+              exact={e.exact}
+              path={`${e.prefix}${e.path}`}
+              component={e.component}
+              key={e.path} // Keys are required when mapping
+            />)
+        }
+      </Switch>
       <Sidebar />
     </div>
   );
