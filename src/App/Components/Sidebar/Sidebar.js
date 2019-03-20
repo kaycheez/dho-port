@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styles from './Sidebar.module.scss';
 
-const Sidebar = props => {
+const Sidebar = () => {
   const examplePhotoCtgy = ['Weddings', 'Corporate', 'Portrait'];
   const exampleVideoCtgy = ['Weddings', 'Dance'];
 

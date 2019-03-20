@@ -56,7 +56,7 @@ export function CarouselBackground () {
     }
 
     return (
-        <div className='carousel__container' id='carousel__Fix'>
+        <div className={`${styles.carousel__container}`} id='carousel__Fix'>
             <Slider {...settings}>
                 {carouselData}
             </Slider>

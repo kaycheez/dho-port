@@ -6,7 +6,13 @@
 
   color: rgb(141, 148, 156);
   background-color: rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  height: 100%;
   padding: 2em 2em;
+  position: absolute;
+  bottom: 0;
+  z-index: 1000;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +28,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     height: 100%;
 
     .categoryContainer {

@@ -10,17 +10,12 @@ class App extends Component {
   render() {
     return (
       <div className={styles.app}>
-        <div className={styles.carouselApp}>
           <CarouselBackground>
               <Switch>
                 <MappedRoutes routes={routes} />
               </Switch>
           </CarouselBackground>
-        </div>
-
-        <div className={styles.sidebarApp}>
           <Sidebar />
-        </div>
       </div>
     );
   }

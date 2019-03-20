@@ -28,17 +28,6 @@ body {
   height: 100vh;
 }
 
-.carouselApp {
-  position: relative;
-}
-
-.sidebarApp {
-  display: flex;
-  height: 100%;
-  bottom: 0;
-  position: absolute;
-  z-index: 1000;
-}
 
 @keyframes showUp {
   0% {
