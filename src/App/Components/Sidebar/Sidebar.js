@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styles from './Sidebar.module.scss';
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   const examplePhotoCtgy = ['Weddings', 'Corporate', 'Portrait'];
@@ -16,14 +17,14 @@ const Sidebar = () => {
 
   const renderCategory = (category, options) => {
     return (
-      <Fragment>
+      <>
         <button className={styles.categoryContainer}>
           <span className={`${styles.category} ${styles.hoveringButton}`}>{category}</span>
           <div className={styles.dropdown}>
             {mapList(options)}
           </div>
         </button>
-      </Fragment>
+      </>
     )
   }
 
@@ -31,7 +32,7 @@ const Sidebar = () => {
   return (
     <nav className={styles.sidebar}>
       <header className={`${styles.header}`}>
-        <h1><a href="#" className={`${styles.hoveringButton}`}>VISUALS BY DAVID HO</a></h1>
+        <h1><Link to="/" className={`${styles.hoveringButton}`}>VISUALS BY DAVID HO</Link></h1>
       </header>
       <section className={styles.section}>
         {renderCategory('Photo', examplePhotoCtgy)}
