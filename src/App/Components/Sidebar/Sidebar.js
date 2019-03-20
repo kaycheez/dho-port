@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './Sidebar.module.scss';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import routes from '../../routes/routes';
 
 const Sidebar = () => {
-  const examplePhotoCtgy = ['Weddings', 'Corporate', 'Portrait'];
-  const exampleVideoCtgy = ['Weddings', 'Dance'];
 
-
-  const mapList = (options) => {
-    return options.map((option, i) => {
+  const mapPaths = (options) => {
+    return options.map((route, i) => {
       return (
-        <a href="#" className={`${styles.hoveringButton}`} key={i}>{option}</a>
+        <li key={i} className={`${styles.hoveringButton}`}>
+          <Link to={route.path} >{route.title}</Link>
+        </li>
       )
     })
   }
@@ -20,9 +20,9 @@ const Sidebar = () => {
       <>
         <button className={styles.categoryContainer}>
           <span className={`${styles.category} ${styles.hoveringButton}`}>{category}</span>
-          <div className={styles.dropdown}>
-            {mapList(options)}
-          </div>
+          <ul className={styles.dropdown}>
+            {mapPaths(options)}
+          </ul>
         </button>
       </>
     )
@@ -35,8 +35,8 @@ const Sidebar = () => {
         <h1><Link to="/" className={`${styles.hoveringButton}`}>VISUALS BY DAVID HO</Link></h1>
       </header>
       <section className={styles.section}>
-        {renderCategory('Photo', examplePhotoCtgy)}
-        {renderCategory('Video', exampleVideoCtgy)}
+        {renderCategory('Photo', routes)}
+        {renderCategory('Video', routes)}
       </section>
       <footer className={`${styles.footer}`}>
         <a href="#" className={`${styles.hoveringButton}`}>Contact</a>
