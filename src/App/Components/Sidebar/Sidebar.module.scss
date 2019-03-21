@@ -1,10 +1,13 @@
+@import '../../scss/_variables.scss';
+
+
 .sidebar {
   all: initial;
   * {
     all: unset;
   }
 
-  color: rgb(141, 148, 156);
+  color: $primary-color;
   background-color: rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   height: 100%;
@@ -15,7 +18,6 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   
   .header {
@@ -27,26 +29,11 @@
   .section {
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 100%;
 
     .categoryContainer {
       display: flex;
       flex-direction: column;
-      align-items: center;
-
-    
-      &:focus-within {
-        .dropdown {
-          display: flex;
-        }
-      }
-    
-      // &:blur {
-      //   .dropdown {
-      //     // animation: fazeOut .5s ease-in .1s;
-      //   }
-      // }
     
       .category {
         font-size: 1.5em;
@@ -54,18 +41,19 @@
         cursor: pointer;
       }
     
-      .dropdown {
-        display: none;
+      .categoryItems {
+        display: flex;
         animation: fazeIn .5s ease-in .1s;
         animation-fill-mode: backwards;
         flex-direction: column;
-        align-items: center;
       }
     }
   }
   
   .footer {
     font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
   }
 }
 
