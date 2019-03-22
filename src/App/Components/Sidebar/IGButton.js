@@ -3,9 +3,9 @@ import cameraIcon from '../../assets/icons/camera.svg'
 
 const IGButton = () => {
   return (
-    <button>
+    <a href="https://www.instagram.com/dho.cr2/" target="_blank" rel="noopener noreferrer">
       <img src={cameraIcon} alt='Camera icon'/>
-    </button>
+    </a>
   )
 }
 
