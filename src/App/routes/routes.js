@@ -1,4 +1,5 @@
 import { CarouselBackground } from "../Components/Carousel/CarouselBackground";
+import { Gallery } from "../Components/Gallery/Gallery";
 
 const routes = [
     {
@@ -11,7 +12,7 @@ const routes = [
     {
         prefix: '',
         path: '/corporate',
-        component: null,
+        component: Gallery,
         exact: false,
         title: 'Corporate'
     },
