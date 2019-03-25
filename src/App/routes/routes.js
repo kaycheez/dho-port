@@ -1,4 +1,13 @@
+import { CarouselBackground } from "../Components/Carousel/CarouselBackground";
+
 const routes = [
+    {
+        prefix: '',
+        path: '/',
+        component: CarouselBackground,
+        exact: true,
+        title: 'Home'
+    },
     {
         prefix: '',
         path: '/corporate',
