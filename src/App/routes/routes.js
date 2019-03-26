@@ -19,21 +19,21 @@ const routes = [
     {
         prefix: '',
         path: '/events',
-        component: null,
+        component: Gallery,
         exact: false,
         title: 'Events'
     },
     {
         prefix: '',
         path: '/fashion',
-        component: null,
+        component: Gallery,
         exact: false,
         title: 'Fashion'
     },
     {
         prefix: '',
         path: '/products',
-        component: null,
+        component: Gallery,
         exact: false,
         title: 'Products'
     },
