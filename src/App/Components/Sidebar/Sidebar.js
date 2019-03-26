@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Sidebar.module.scss';
 import { Link, withRouter } from 'react-router-dom';
 import routes from '../../routes/routes';
@@ -8,8 +8,10 @@ import IGButton from './IGButton';
 const Sidebar = props => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [visibility, setVisibility] = useState({ display: 'none' })
+  const [transparency, setTransparency] = useState({ backgroundColor: 'rgba(0, 0, 0, 0)'})
 
 
+  
   
   const mapPaths = (options) => {
     return options.map((route, i) => {
@@ -35,12 +37,19 @@ const Sidebar = props => {
     } else {
       setVisibility({ display: 'flex' });
     }
+
+    // if (showSidebar) {
+    //   setTransparency({ backgroundColor: 'rgba(0, 0, 0, 0)'});
+    // } else {
+    //   setTransparency({ backgroundColor: 'rgba(0, 0, 0, 0.1)'});
+    // }
+
     setShowSidebar(!showSidebar);
   }
   
   
   return (
-    <nav className={styles.sidebar}>
+    <nav className={styles.sidebar} style={transparency} >
       <header className={`${styles.header}`}>
         <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}>X</span>
         <h1><Link to="/" className={`${styles.hoveringButton}`}>DAVIDHO</Link></h1>
