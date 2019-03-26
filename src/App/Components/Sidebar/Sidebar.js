@@ -7,6 +7,8 @@ import IGButton from './IGButton';
 
 const Sidebar = props => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [visibility, setVisibility] = useState({ display: 'none' })
+
 
   
   const mapPaths = (options) => {
@@ -21,11 +23,19 @@ const Sidebar = props => {
 
   const handleClick = () => {
     if (props.location.pathname === '/') {
-      setShowSidebar(!showSidebar);
-      console.log(props);
+      hideSidebar();
     } else {
       props.history.goBack();
     }
+  }
+
+  const hideSidebar = () => {
+    if (showSidebar) {
+      setVisibility({ display: 'none' });
+    } else {
+      setVisibility({ display: 'flex' });
+    }
+    setShowSidebar(!showSidebar);
   }
   
   
@@ -35,7 +45,7 @@ const Sidebar = props => {
         <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}>X</span>
         <h1><Link to="/" className={`${styles.hoveringButton}`}>DAVIDHO</Link></h1>
       </header>
-      <section className={styles.section}>
+      <section className={`${styles.section}`} style={visibility}>
         <button className={styles.categoryContainer}>
           <span className={`${styles.category} ${styles.hoveringButton}`}>Photo</span>
           <ul className={styles.categoryItems}>
@@ -49,7 +59,7 @@ const Sidebar = props => {
           </ul>
         </button>
       </section>
-      <footer className={`${styles.footer}`}>
+      <footer className={`${styles.footer}`} style={visibility}>
         <EmailButton />
         <IGButton />
       </footer>

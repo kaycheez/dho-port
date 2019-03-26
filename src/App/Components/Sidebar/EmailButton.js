@@ -1,5 +1,6 @@
 import React from 'react';
 import emailIcon from '../../assets/icons/email.svg'
+import styles from './Sidebar.module.scss';
 
 const EmailButton = () => {
   const copyEmailToClipboard = (text) => {
@@ -25,7 +26,7 @@ const EmailButton = () => {
 
 
   return (
-    <button onClick={() => copyEmailToClipboard('visualsbydavidho@gmail.com')}>
+    <button className={`${styles.hoveringButton}`} onClick={() => copyEmailToClipboard('visualsbydavidho@gmail.com')}>
       <img src={emailIcon} alt='Email icon'/>
     </button>
   )
