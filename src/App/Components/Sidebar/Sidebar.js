@@ -8,10 +8,15 @@ import IGButton from './IGButton';
 const Sidebar = props => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [visibility, setVisibility] = useState({ display: 'none' })
-  const [transparency, setTransparency] = useState({ backgroundColor: 'rgba(0, 0, 0, 0)'})
+  // const [transparency, setTransparency] = useState({ backgroundColor: 'rgba(0, 0, 0, 0)'})
 
 
-  
+  useEffect(() => {
+    if (props.location.pathname === '/') {
+      toggleSidebar();
+    }
+  }, [props.location.pathname])
+
   
   const mapPaths = (options) => {
     return options.map((route, i) => {
@@ -23,15 +28,16 @@ const Sidebar = props => {
     })
   }
 
+
   const handleClick = () => {
     if (props.location.pathname === '/') {
-      hideSidebar();
+      toggleSidebar();
     } else {
       props.history.goBack();
     }
   }
 
-  const hideSidebar = () => {
+  const toggleSidebar = () => {
     if (showSidebar) {
       setVisibility({ display: 'none' });
     } else {
@@ -49,7 +55,7 @@ const Sidebar = props => {
   
   
   return (
-    <nav className={styles.sidebar} style={transparency} >
+    <nav className={styles.sidebar}>
       <header className={`${styles.header}`}>
         <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}>X</span>
         <h1><Link to="/" className={`${styles.hoveringButton}`}>DAVIDHO</Link></h1>
@@ -57,12 +63,6 @@ const Sidebar = props => {
       <section className={`${styles.section}`} style={visibility}>
         <button className={styles.categoryContainer}>
           <span className={`${styles.category} ${styles.hoveringButton}`}>Photo</span>
-          <ul className={styles.categoryItems}>
-            {mapPaths(routes)}
-          </ul>
-        </button>
-        <button className={styles.categoryContainer}>
-          <span className={`${styles.category} ${styles.hoveringButton}`}>Video</span>
           <ul className={styles.categoryItems}>
             {mapPaths(routes)}
           </ul>
