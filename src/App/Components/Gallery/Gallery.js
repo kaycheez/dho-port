@@ -5,24 +5,30 @@ import styles from './Gallery.module.scss';
 export function Gallery () {
 
     var mappedImages;
+    var title;
 
     // Local variables
     const hostPage = 'http://localhost:3001/';
     const currPage = window.location.href;
-
-    // Using current URL, will regex to get title of each page
-    const regex = new RegExp(hostPage, "g")
-    const title = currPage.replace(regex, "")
-    const newTitle = title.charAt(0).toUpperCase() + title.slice(1);
 
     // Switch statement to change data in mappedImages
     function imageSwitch(currPage) {
         switch(currPage) {
             case hostPage + 'corporate':
                 mappedImages = corporateMap;
+                title = 'Corporate';
                 break;
             case hostPage + 'fashion':
                 mappedImages = fashionMap;
+                title = 'Fashion';
+                break;
+            case hostPage + 'events':
+                mappedImages = "Events";
+                title = 'Events';
+                break;
+            case hostPage + 'products':
+                mappedImages = "Products";
+                title = 'Products';
                 break;
             default:
                 return null;
@@ -31,11 +37,13 @@ export function Gallery () {
 
     return (
         <div className={styles.gallery}>
+        
+            {imageSwitch(currPage)}
 
-            <div className={styles.header}>{newTitle}</div>
+            {/* <div className={styles.header}>{title}</div> */}
 
             <div className={styles.sidegallery}>
-                {imageSwitch(currPage)}
+                <div className={styles.header}>{title}</div>
                 {mappedImages}
                 
             </div>

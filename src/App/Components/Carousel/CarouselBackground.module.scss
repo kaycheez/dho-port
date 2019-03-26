@@ -6,6 +6,7 @@
         position: relative;
         font-family: 'Playfair Display', serif;
         font-family: normal;
+        animation: fadeIn 1.2s;
     }
 
     &__arrow {
@@ -75,4 +76,9 @@
     transform: translate(-50%, -50%);
     position: absolute;
     z-index: 100000;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
 }
