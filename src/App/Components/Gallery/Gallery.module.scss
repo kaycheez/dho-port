@@ -17,22 +17,35 @@
     justify-self: center;
 }
 
-.subgallery{
+.sidegallery{
     // border: 1rem dashed blue;
     height: 100vh;
-    align-content: space-around;
+    // align-content: space-around;
     grid-column: gallery-start / gallery-end;
     
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(auto-fill, 20rem);
+    grid-template-columns: repeat(4, minmax(10rem, 1fr));
+    grid-template-rows: repeat(auto-fit, 20rem);
     grid-auto-rows: 20rem;
-    grid-gap: 2rem;
+    grid-gap: 10rem 2rem;
 
 }
 
-.child {
-    background: red;
+.sideGalleryItems{
+
+    position: relative;
+    display: flex;
+
+    img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    h1 {
+        position: absolute;
+        // align-self: center;
+        // justify-self: center;
+    }
 }
 
 @keyframes fadeIn {
