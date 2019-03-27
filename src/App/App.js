@@ -1,24 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './App.module.scss';
 import Sidebar from './Components/Sidebar/Sidebar';
-import { Route, Switch } from 'react-router-dom';
-import routes from './routes/routes'
+import MappedRoutes from './routes/mappedRoutes';
 
 const App = () => {
+  const [showSidebar, setShowSidebar] = useState(true);
+
   return (
     <div className={styles.app}>
-      <Switch>
-        {
-          routes.map(e =>
-            <Route
-              exact={e.exact}
-              path={`${e.prefix}${e.path}`}
-              component={e.component}
-              key={e.path} // Keys are required when mapping
-            />)
-        }
-      </Switch>
-      <Sidebar />
+      <MappedRoutes />
+      <Sidebar 
+        showSidebar={showSidebar}
+        setShowSidebar={setShowSidebar}
+      />
     </div>
   );
 }

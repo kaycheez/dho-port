@@ -3,7 +3,7 @@ import { carouselData } from './CarouselData';
 import styles from './CarouselBackground.module.scss';
 import Slider from 'react-slick';
 
-export function CarouselBackground() {
+const CarouselBackground = () => {
 
   const NextArrow = (props) => {
     return (
@@ -63,3 +63,4 @@ export function CarouselBackground() {
     </div>
   )
 }
+export default CarouselBackground

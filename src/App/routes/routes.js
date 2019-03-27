@@ -1,4 +1,4 @@
-import { CarouselBackground } from "../Components/Carousel/CarouselBackground";
+import CarouselBackground from "../Components/Carousel/CarouselBackground";
 
 const routes = [
     {
