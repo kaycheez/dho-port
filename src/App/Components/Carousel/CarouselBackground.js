@@ -5,7 +5,11 @@ import Slider from 'react-slick';
 
 const CarouselBackground = (props) => {
 
-  console.log(props.sidebar)
+  // console.log(props.sidebar)
+
+  // const visibleArrows = props.sidebar ? styles.arrowOut : styles.carousel__arrow;
+
+  const brightness = props.sidebar ? styles.carousel__sidebarOpen : styles.carousel__sidebarClose;
 
   const NextArrow = (props) => {
     return (
@@ -53,13 +57,17 @@ const CarouselBackground = (props) => {
     pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: props.sidebar ? false : true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
   }
 
 
   return (
-    <div className={`${styles.carousel__container}`} id='carousel__Fix'>
+    <div 
+      // className={`${styles.carousel__container}`} 
+      className={brightness}
+      id='carousel__Fix'>
       <Slider {...settings}>
         {carouselData}
       </Slider>

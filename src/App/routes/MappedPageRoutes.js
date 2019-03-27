@@ -6,7 +6,8 @@ import { Gallery } from "../Components/Gallery/Gallery";
 
 const mappedPageRoutes = (props) => {
 
-  console.log(props.sidebar);
+  // console.log(props.sidebar);
+
   return (
     <Switch>
         <Route

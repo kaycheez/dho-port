@@ -5,7 +5,7 @@ import Sidebar from './Components/Sidebar/Sidebar';
 import MappedPageRoutes from './routes/MappedPageRoutes';
 
 const App = () => {
-  const [showSidebar, setShowSidebar] = useState('bye');
+  const [showSidebar, setShowSidebar] = useState(true);
 
   return (
     <div className={styles.app}>
