@@ -3,7 +3,9 @@ import { carouselData } from './CarouselData';
 import styles from './CarouselBackground.module.scss';
 import Slider from 'react-slick';
 
-const CarouselBackground = () => {
+const CarouselBackground = (props) => {
+
+  console.log(props.sidebar)
 
   const NextArrow = (props) => {
     return (
@@ -54,6 +56,7 @@ const CarouselBackground = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
   }
+
 
   return (
     <div className={`${styles.carousel__container}`} id='carousel__Fix'>

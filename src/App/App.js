@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import styles from './App.module.scss';
 import Sidebar from './Components/Sidebar/Sidebar';
-import MappedRoutes from './routes/mappedRoutes';
+// import MappedRoutes from './routes/mappedRoutes';
+import MappedPageRoutes from './routes/MappedPageRoutes';
 
 const App = () => {
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState('bye');
 
   return (
     <div className={styles.app}>
-      <MappedRoutes />
+      {/* <MappedRoutes /> */}
+      <MappedPageRoutes sidebar={showSidebar} />
       <Sidebar 
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
