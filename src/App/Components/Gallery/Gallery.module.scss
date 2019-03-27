@@ -8,46 +8,38 @@
     grid-template-columns: [sidebar-start]repeat(2, 16.25rem) 
     [sidebar-end gallery-gap-start] 2rem [gallery-start] 
     repeat(6, 1fr) [gallery-end] 2rem [gallery-end-gap];
-    grid-template-rows: [header-start] 1fr;
-}
-
-
-.sidegallery {
-    height: 100vh;
-    grid-column: gallery-start / gallery-end;
-    
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    grid-template-rows: 10rem repeat(auto-fit, 20rem);
-    grid-auto-rows: 20rem;
-    grid-gap: 10rem 2rem;
-
+    grid-template-rows: [header-start] .1fr;
 }
 
 .header {
-    grid-column: 1 / -1;
+    grid-column: 5 / 9;
     grid-row-start: 1;
     font-size: 9rem;
     justify-self: center;
 }
 
+.sidegallery {
+
+    grid-column: gallery-start / gallery-end;
+    columns: 3 24rem;
+    // column-gap: 1.2rem;
+}
+
 .sideGalleryItems {
 
     position: relative;
-    // display: flex;
     justify-self: center;
 
     img {
-        max-height: 100%;
-        max-width: 100%;
+        width: 100%;
         object-fit: cover;
     }
 
-    h1 {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+    // h1 {
+    //     position: absolute;
+    //     left: 50%;
+    //     transform: translateX(-50%);
+    // }
 }
 
 @keyframes fadeIn {

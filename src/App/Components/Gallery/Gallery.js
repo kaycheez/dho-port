@@ -39,11 +39,11 @@ export function Gallery () {
         <div className={styles.gallery}>
         
             {imageSwitch(currPage)}
-
-            {/* <div className={styles.header}>{title}</div> */}
-
+            <div className={styles.header}>{title}</div>
             <div className={styles.sidegallery}>
-                <div className={styles.header}>{title}</div>
+
+                {/* <div className={styles.header}>{title}</div> */}
+
                 {mappedImages}
                 
             </div>
