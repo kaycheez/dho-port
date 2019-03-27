@@ -23,12 +23,15 @@
     grid-column: gallery-start / gallery-end;
     columns: 3 24rem;
     // column-gap: 1.2rem;
+
 }
 
 .sideGalleryItems {
 
     position: relative;
     justify-self: center;
+    margin-top: .4rem;
+    display: inline-block;
 
     img {
         width: 100%;
@@ -40,6 +43,11 @@
     //     left: 50%;
     //     transform: translateX(-50%);
     // }
+
+    &:hover {
+        filter: brightness(90%);
+        cursor: pointer;
+    }
 }
 
 @keyframes fadeIn {

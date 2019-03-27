@@ -38,26 +38,6 @@ const corporateImages = [
 
 const fashionImages = [
     {
-        image: fashion,
-        name: "Fashion",
-        path: "/"
-    },
-    {
-        image: fashion1,
-        name: "Fashion",
-        path: "/"
-    },
-    {
-        image: fashion2,
-        name: "Fashion",
-        path: "/"
-    },
-    {
-        image: fashion3,
-        name: "Fashion",
-        path: "/"
-    },
-    {
         image: fashion4,
         name: "Fashion",
         path: "/"
@@ -74,6 +54,26 @@ const fashionImages = [
     },
     {
         image: fashion5,
+        name: "Fashion",
+        path: "/"
+    },
+    {
+        image: fashion,
+        name: "Fashion",
+        path: "/"
+    },
+    {
+        image: corporate,
+        name: "Fashion",
+        path: "/"
+    },
+    {
+        image: fashion2,
+        name: "Fashion",
+        path: "/"
+    },
+    {
+        image: fashion3,
         name: "Fashion",
         path: "/"
     },
