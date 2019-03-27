@@ -6,29 +6,26 @@ import EmailButton from './EmailButton';
 import IGButton from './IGButton';
 
 const Sidebar = props => {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [visibility, setVisibility] = useState({ display: 'none' })
+  
+  const [visibility, setVisibility] = useState({
+    insideElement: { display: 'none' },
+    sidebarBorder: { backgroundColor: 'rgba(0, 0, 0, 0)'}
+  })
   // const [transparency, setTransparency] = useState({ backgroundColor: 'rgba(0, 0, 0, 0)'})
 
 
   useEffect(() => {
+    // default state of homepage is hidden sidebar
     if (props.location.pathname === '/') {
       toggleSidebar();
+    } else {
+      if (!props.showSidebar) {
+        toggleSidebar();
+      }
     }
   }, [props.location.pathname])
 
-  
-  const mapPaths = (options) => {
-    return options.map((route, i) => {
-      return (
-        <li key={i} className={`${styles.hoveringButton}`}>
-          <Link to={route.path} >{route.title}</Link>
-        </li>
-      )
-    })
-  }
-
-
+  // menu/back button functionality
   const handleClick = () => {
     if (props.location.pathname === '/') {
       toggleSidebar();
@@ -36,31 +33,40 @@ const Sidebar = props => {
       props.history.goBack();
     }
   }
-
+  
   const toggleSidebar = () => {
-    if (showSidebar) {
-      setVisibility({ display: 'none' });
+    if (props.showSidebar) {
+      setVisibility({insideElement: { display: 'none' }});
     } else {
-      setVisibility({ display: 'flex' });
+      setVisibility({insideElement: { display: 'flex' }});
     }
-
+    
     // if (showSidebar) {
-    //   setTransparency({ backgroundColor: 'rgba(0, 0, 0, 0)'});
-    // } else {
-    //   setTransparency({ backgroundColor: 'rgba(0, 0, 0, 0.1)'});
-    // }
-
-    setShowSidebar(!showSidebar);
-  }
-  
-  
-  return (
-    <nav className={styles.sidebar}>
+      //   setTransparency({ backgroundColor: 'rgba(0, 0, 0, 0)'});
+      // } else {
+      //   setTransparency({ backgroundColor: 'rgba(0, 0, 0, 0.1)'});
+      // }
+        
+      props.setShowSidebar(!props.showSidebar);
+    }
+    
+    const mapPaths = (options) => {
+      return options.map((route, i) => {
+        return (
+          <li key={i} className={`${styles.hoveringButton}`}>
+            <Link to={route.path} >{route.title}</Link>
+          </li>
+        )
+      })
+    }
+      
+    return (
+      <nav className={styles.sidebar}>
       <header className={`${styles.header}`}>
         <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}>X</span>
         <h1><Link to="/" className={`${styles.hoveringButton}`}>DAVIDHO</Link></h1>
       </header>
-      <section className={`${styles.section}`} style={visibility}>
+      <section className={`${styles.section}`} style={visibility.insideElement}>
         <button className={styles.categoryContainer}>
           <span className={`${styles.category} ${styles.hoveringButton}`}>Photo</span>
           <ul className={styles.categoryItems}>
@@ -68,7 +74,7 @@ const Sidebar = props => {
           </ul>
         </button>
       </section>
-      <footer className={`${styles.footer}`} style={visibility}>
+      <footer className={`${styles.footer}`} style={visibility.insideElement}>
         <EmailButton />
         <IGButton />
       </footer>
