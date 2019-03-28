@@ -1,14 +1,11 @@
 import React from 'react';
-import CarouselData from './CarouselData';
+import { Link } from 'react-router-dom';
 import styles from './CarouselBackground.module.scss';
+import routes from '../../routes/routes';
 import { NextArrow, PrevArrow } from './Arrows';
 import Slider from 'react-slick';
 
 const CarouselBackground = (props) => {
-
-  // const visibleArrows = props.sidebar ? styles.arrowOut : styles.carousel__arrow;
-
-  const brightness = props.sidebar ? styles.carousel__sidebarOpen : styles.carousel__sidebarClose;
 
   const settings = {
     fade: true,
@@ -18,16 +15,31 @@ const CarouselBackground = (props) => {
     pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: props.sidebar ? false : true,
+    arrows: !props.sidebar,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
   }
 
+  const brightness = props.sidebar ? styles.carousel__sidebarOpen : styles.carousel__sidebarClose;
+
+  const mappedImages = () => {
+    return routes.map(({title, path, image}, i) => {
+      return (
+        <div className={styles.carousel__image} >
+
+          <img className={styles.carousel__imageItem} alt={title} src={image} />
+          <Link to={path} className={styles.link}/>
+          <h1 className={styles.carousel__imageCaption}>{title}</h1>
+  
+        </div>
+      )
+    })
+  }
 
   return (
     <div className={brightness} id='carousel__Fix'>
-      <Slider {...settings}>
-        <CarouselData />
+      <Slider {...settings} >
+        {mappedImages()}
       </Slider>
     </div>
   )
