@@ -1,12 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import CarouselBackground from "../Components/Carousel/CarouselBackground";
-import { Gallery } from "../Components/Gallery/Gallery";
+import Gallery from "../Components/Gallery/Gallery";
 
 
 const mappedPageRoutes = (props) => {
-
-  // console.log(props.sidebar);
 
   return (
     <Switch>
@@ -17,23 +15,23 @@ const mappedPageRoutes = (props) => {
         />
         <Route
           path={`/corporate`}
-          component={Gallery}
+          render={(properties) => <Gallery mappedImages={properties} title={"Corporate"} />}
         />
         <Route
           path={`/fashion`}
-          component={Gallery}
+          render={(properties) => <Gallery mappedImages={properties} title={"Fashion"} />}
         />
         <Route
-          path={`/event`}
-          component={Gallery}
+          path={`/events`}
+          render={(properties) => <Gallery mappedImages={properties} title={"Event"} />}
         />
         <Route
           path={`/food`}
-          component={Gallery}
+          render={(properties) => <Gallery mappedImages={properties} title={"Food"} />}
         />
         <Route
-          path={`/editorial`}
-          component={Gallery}
+          path={`/products`}
+          render={(properties) => <Gallery mappedImages={properties} title={"Editorial"} />}
         />
     </Switch>
   )

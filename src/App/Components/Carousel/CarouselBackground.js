@@ -1,59 +1,20 @@
 import React from 'react';
-import { carouselData } from './CarouselData';
+import CarouselData from './CarouselData';
 import styles from './CarouselBackground.module.scss';
+import { NextArrow, PrevArrow } from './Arrows';
 import Slider from 'react-slick';
 
 const CarouselBackground = (props) => {
-
-  // console.log(props.sidebar)
 
   // const visibleArrows = props.sidebar ? styles.arrowOut : styles.carousel__arrow;
 
   const brightness = props.sidebar ? styles.carousel__sidebarOpen : styles.carousel__sidebarClose;
 
-  const NextArrow = (props) => {
-    return (
-      <div {...props} className={`${styles.carousel__arrow} ${styles.carousel__arrowNext}`}>
-        <a className={styles.animated_arrow} href='https://google.com'>
-          <span className={`${styles.the_arrow} ${styles._left}`}>
-            <span className={styles.shaft} />
-          </span>
-          <span className={styles.main}>
-            <span className={styles.text}>
-            </span>
-            <span className={`${styles.the_arrow} ${styles._right}`}>
-              <span className={styles.shaft} />
-            </span>
-          </span>
-        </a>
-      </div>
-    )
-  }
-
-  const PrevArrow = (props) => {
-    return (
-      <div {...props} className={`${styles.carousel__arrow} ${styles.carousel__arrowPrev}`}>
-        <a className={styles.animated_arrow} href='https://google.com'>
-          <span className={`${styles.the_arrow} ${styles._left}`}>
-            <span className={styles.shaft} />
-          </span>
-          <span className={styles.main}>
-            <span className={styles.text}>
-            </span>
-            <span className={`${styles.the_arrow} ${styles._right}`}>
-              <span className={styles.shaft} />
-            </span>
-          </span>
-        </a>
-      </div>
-    )
-  }
-
   const settings = {
     fade: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 3700,
+    autoplaySpeed: 1000,
     pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -64,12 +25,9 @@ const CarouselBackground = (props) => {
 
 
   return (
-    <div 
-      // className={`${styles.carousel__container}`} 
-      className={brightness}
-      id='carousel__Fix'>
+    <div className={brightness} id='carousel__Fix'>
       <Slider {...settings}>
-        {carouselData}
+        <CarouselData />
       </Slider>
     </div>
   )
