@@ -1,40 +1,41 @@
-import CarouselBackground from "../Components/Carousel/CarouselBackground";
+import Gallery from "../Components/Gallery/Gallery";
+import corporate from "../assets/images/corporate.jpg";
+import events from "../assets/images/event.jpg";
+import fashion from "../assets/images/fashion.jpg";
+import products from "../assets/images/product.jpg";
 
 const routes = [
     {
         prefix: '',
-        path: '/',
-        component: CarouselBackground,
-        exact: true,
-        title: 'Home'
-    },
-    {
-        prefix: '',
         path: '/corporate',
-        component: null,
+        component: Gallery,
         exact: false,
-        title: 'Corporate'
+        title: 'Corporate',
+        image: corporate
     },
     {
         prefix: '',
         path: '/events',
-        component: null,
+        component: Gallery,
         exact: false,
-        title: 'Events'
+        title: 'Events',
+        image: events
     },
     {
         prefix: '',
         path: '/fashion',
-        component: null,
+        component: Gallery,
         exact: false,
-        title: 'Fashion'
+        title: 'Fashion',
+        image: fashion
     },
     {
         prefix: '',
         path: '/products',
-        component: null,
+        component: Gallery,
         exact: false,
-        title: 'Products'
+        title: 'Products',
+        image: products
     },
 ]
 

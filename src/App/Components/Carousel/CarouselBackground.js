@@ -1,64 +1,45 @@
 import React from 'react';
-import { carouselData } from './CarouselData';
+import { Link } from 'react-router-dom';
 import styles from './CarouselBackground.module.scss';
+import routes from '../../routes/routes';
+import { NextArrow, PrevArrow } from './Arrows';
 import Slider from 'react-slick';
 
-const CarouselBackground = () => {
-
-  const NextArrow = (props) => {
-    return (
-      <div {...props} className={`${styles.carousel__arrow} ${styles.carousel__arrowNext}`}>
-        <a className={styles.animated_arrow} href='https://google.com'>
-          <span className={`${styles.the_arrow} ${styles._left}`}>
-            <span className={styles.shaft} />
-          </span>
-          <span className={styles.main}>
-            <span className={styles.text}>
-            </span>
-            <span className={`${styles.the_arrow} ${styles._right}`}>
-              <span className={styles.shaft} />
-            </span>
-          </span>
-        </a>
-      </div>
-    )
-  }
-
-  const PrevArrow = (props) => {
-    return (
-      <div {...props} className={`${styles.carousel__arrow} ${styles.carousel__arrowPrev}`}>
-        <a className={styles.animated_arrow} href='https://google.com'>
-          <span className={`${styles.the_arrow} ${styles._left}`}>
-            <span className={styles.shaft} />
-          </span>
-          <span className={styles.main}>
-            <span className={styles.text}>
-            </span>
-            <span className={`${styles.the_arrow} ${styles._right}`}>
-              <span className={styles.shaft} />
-            </span>
-          </span>
-        </a>
-      </div>
-    )
-  }
+const CarouselBackground = (props) => {
 
   const settings = {
     fade: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 3700,
+    autoplaySpeed: 1000,
     pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: !props.sidebar,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
   }
 
+  const brightness = props.sidebar ? styles.carousel__sidebarOpen : styles.carousel__sidebarClose;
+
+  const mappedImages = () => {
+    return routes.map(({title, path, image}, i) => {
+      return (
+        <div className={styles.carousel__image} >
+
+          <img className={styles.carousel__imageItem} alt={title} src={image} />
+          <Link to={path} className={styles.link}/>
+          <h1 className={styles.carousel__imageCaption}>{title}</h1>
+  
+        </div>
+      )
+    })
+  }
+
   return (
-    <div className={`${styles.carousel__container}`} id='carousel__Fix'>
-      <Slider {...settings}>
-        {carouselData}
+    <div className={brightness} id='carousel__Fix'>
+      <Slider {...settings} >
+        {mappedImages()}
       </Slider>
     </div>
   )
