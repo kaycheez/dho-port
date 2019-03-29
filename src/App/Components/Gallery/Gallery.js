@@ -1,92 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Gallery.module.scss';
 import GalleryData from './GalleryData';
+import config from '../../assets/config';
+import AWS from 'aws-sdk';
 
-import fashion from '../../assets/images/fashion.jpg';
-import fashion1 from '../../assets/images/1.jpg';
-import fashion2 from '../../assets/images/2.jpg';
-import fashion3 from '../../assets/images/3.jpg';
-import fashion4 from '../../assets/images/4.jpg';
-import fashion5 from '../../assets/images/5.jpg';
+const Gallery = (props, { mappedImages, title }) => {
 
-const Gallery = ({ mappedImages, title }) => {
+  const [imageLength, setImageLength] = useState();
+  // console.log(props.mappedImages.match.path);
 
-  const fashionImages = [
-    {
-      image: fashion4,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion1,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion5,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion5,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion2,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion3,
-      name: "Fashion",
-      path: "/"
-    },
-  ];
+  const currPage = window.location.href;
 
-  // Local variables
-  // const hostPage = 'http://localhost:3001/';
-  // const currPage = window.location.href;
+  useEffect(() => {
+    const retrieveImages = async () => {
 
-  // Switch statement to change data in mappedImages
-  // function imageSwitch(currPage) {
-  //     switch(currPage) {
-  //         case hostPage + 'corporate':
-  //             mappedImages = corporateMap;
-  //             title = 'Corporate';
-  //             break;
-  //         case hostPage + 'fashion':
-  //             mappedImages = fashionMap;
-  //             title = 'Fashion';
-  //             break;
-  //         case hostPage + 'events':
-  //             mappedImages = "Events";
-  //             title = 'Events';
-  //             break;
-  //         case hostPage + 'products':
-  //             mappedImages = "Products";
-  //             title = 'Products';
-  //             break;
-  //         default:
-  //             return null;
-  //     }
-  // }
+      AWS.config.setPromisesDependency();
+      AWS.config.update({
+        accessKeyId: config.access,
+        secretAccessKey: config.secret,
+        region: 'us-west-1'
+      })
+  
+      const s3 = new AWS.S3();
+      const response = await s3.listObjectsV2({
+        Bucket: 'visualsbydavidhophotos',
+        Prefix: 'fashion'
+      }).promise();
+  
+      const length = response.Contents.length;
+      setImageLength(length);
+    };
+
+    retrieveImages();
+  }, [])
 
   return (
     <div className={styles.gallery}>
-
-      {/* {imageSwitch(currPage)} */}
-
+    
       <div className={styles.header}>{title}</div>
 
       <div className={styles.sidegallery}>
 
-        <GalleryData images={fashionImages} />
+        {/* <GalleryData /> */}
 
       </div>
     </div>

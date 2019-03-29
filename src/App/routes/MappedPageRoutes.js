@@ -31,7 +31,7 @@ const mappedPageRoutes = (props) => {
         />
         <Route
           path={`/products`}
-          render={(properties) => <Gallery mappedImages={properties} title={"Editorial"} />}
+          render={(properties) => <Gallery mappedImages={properties} title={"Products"} />}
         />
     </Switch>
   )
