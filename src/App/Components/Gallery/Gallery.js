@@ -6,12 +6,19 @@ import AWS from 'aws-sdk';
 
 const Gallery = (props, { mappedImages, title }) => {
 
-  const [imageLength, setImageLength] = useState();
-  // console.log(props.mappedImages.match.path);
-
   const currPage = window.location.href;
+  
+  // Will get the current path || url with "/" for example, "/corporate, /fashion, etc"
+  const currentPath = props.mappedImages.match.path;
+
+  // Will get the amount of pictures in S3 bucket
+  const [imageLength, setImageLength] = useState();
+
+  // Will get the current path || url. For example, "corporate, fashion, etc"
+  const [fetchCategory, setFetchCategory] = useState(currentPath.substring(1, currentPath.length));
 
   useEffect(() => {
+
     const retrieveImages = async () => {
 
       AWS.config.setPromisesDependency();
@@ -24,15 +31,17 @@ const Gallery = (props, { mappedImages, title }) => {
       const s3 = new AWS.S3();
       const response = await s3.listObjectsV2({
         Bucket: 'visualsbydavidhophotos',
-        Prefix: 'fashion'
+        Prefix: fetchCategory
       }).promise();
   
       const length = response.Contents.length;
-      setImageLength(length);
+      setImageLength(length - 1);
     };
 
     retrieveImages();
-  }, [])
+  }, [fetchCategory])
+
+  console.log(imageLength);
 
   return (
     <div className={styles.gallery}>
