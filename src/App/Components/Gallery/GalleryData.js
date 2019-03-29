@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './Gallery.module.scss';
 
 const GalleryData = (props) => {
@@ -6,11 +6,11 @@ const GalleryData = (props) => {
   const mappedImages = [];
   const amazonUrl = 'https://s3-us-west-1.amazonaws.com/visualsbydavidhophotos';
 
+
+  // Pushes the links into the array, mappedImages, so that it can be mapped out
   for (let i = 1; i <= props.imageLength; i++) {
     mappedImages.push({image: `${amazonUrl}/${props.fetchCategory}/${props.fetchCategory}${i}.webp`})
   }
-
-  console.log(mappedImages);
 
   const mapImages = (images) => {
     return mappedImages.map(({ image, name, path }, i) => {

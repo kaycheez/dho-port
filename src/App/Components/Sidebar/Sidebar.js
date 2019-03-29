@@ -25,6 +25,7 @@ const Sidebar = props => {
     }
   }, [props.location.pathname])
 
+
   // menu/back button functionality
   const handleClick = () => {
     if (props.location.pathname === '/') {

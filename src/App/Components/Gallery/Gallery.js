@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './Gallery.module.scss';
 import GalleryData from './GalleryData';
 import config from '../../assets/config';
@@ -6,20 +6,22 @@ import AWS from 'aws-sdk';
 
 const Gallery = (props, { mappedImages, title }) => {
 
-  // const currPage = window.location.href;
-  
-  // Will get the current path || url with "/" for example, "/corporate, /fashion, etc"
-  const currentPath = props.mappedImages.match.path;
+  // console.log(props)
+    // Will get the current path || url with "/" for example, "/corporate, /fashion, etc"
+    const currentPath = props.mappedImages.match.path;
+    const fetchCategory = currentPath.substring(1, currentPath.length);
+    const currPage = window.location.href;
 
-  // Will get the amount of pictures in S3 bucket
-  const [imageLength, setImageLength] = useState();
+    // Will get the amount of pictures in S3 bucket
+    const [imageLength, setImageLength] = useState();
 
-  // Will get the current path || url. For example, "corporate, fashion, etc"
-  const [fetchCategory, setFetchCategory] = useState(currentPath.substring(1, currentPath.length));
 
-  useEffect(() => {
+  function imageSwitch(currPage) {
+    retrieveImages(fetchCategory);
+    title = currentPath.substring(1, 2).toUpperCase() + currentPath.substring(2, currentPath.length);
+  }
 
-    const retrieveImages = async () => {
+    const retrieveImages = async (fetchCategory) => {
 
       AWS.config.setPromisesDependency();
       AWS.config.update({
@@ -31,20 +33,18 @@ const Gallery = (props, { mappedImages, title }) => {
       const s3 = new AWS.S3();
       const response = await s3.listObjectsV2({
         Bucket: 'visualsbydavidhophotos',
-        Prefix: fetchCategory
+        Prefix: fetchCategory,
       }).promise();
   
       const length = response.Contents.length;
       setImageLength(length - 1);
     };
 
-    retrieveImages();
-  }, [fetchCategory])
-
-  console.log(imageLength);
-
+    console.log(imageLength)
   return (
     <div className={styles.gallery}>
+
+      {imageSwitch(currPage)}
     
       <div className={styles.header}>{title}</div>
 
