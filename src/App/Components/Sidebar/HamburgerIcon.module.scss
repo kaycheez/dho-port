@@ -1,0 +1,45 @@
+@import '../../scss/_variables.scss';
+
+.hamburger {
+  position: relative;
+  display: block;
+  width: 1em;
+
+  &::before, 
+  &::after,
+  & span {
+    background-color: white;
+    border-radius: 3px;
+    content: '';
+    display: block;
+    height: 5px;
+    margin: 7px 0;
+
+  }
+}
+
+// .hamburgerInner,
+// .hamburgerInner::before,
+// .hamburgerInner::after {
+//   display: block;
+//   width: .9em;
+//   height: .15em;
+//   background-color: $primary-color;
+//   border-radius: 20%;
+
+//   &::before,
+//   &::after {
+//     position: absolute;
+//     display: block;
+//     content: '';
+//   }
+
+//   &::before {
+//     top: -.5em;
+//   }
+
+//   &::after {
+//     top: .5em;
+//   }
+// }
+

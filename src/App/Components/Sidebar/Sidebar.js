@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import routes from '../../routes/routes';
 import EmailButton from './EmailButton';
 import IGButton from './IGButton';
+import HamburgerIcon from './HamburgerIcon';
 
 const Sidebar = props => {
   
@@ -11,7 +12,6 @@ const Sidebar = props => {
     insideElement: { display: 'none' },
     sidebarBorder: { backgroundColor: 'rgba(0, 0, 0, 0)'}
   })
-  // const [transparency, setTransparency] = useState({ backgroundColor: 'rgba(0, 0, 0, 0)'})
 
 
   useEffect(() => {
@@ -40,14 +40,8 @@ const Sidebar = props => {
     } else {
       setVisibility({insideElement: { display: 'flex' }});
     }
-    
-    // if (showSidebar) {
-      //   setTransparency({ backgroundColor: 'rgba(0, 0, 0, 0)'});
-      // } else {
-      //   setTransparency({ backgroundColor: 'rgba(0, 0, 0, 0.1)'});
-      // }
         
-      props.setShowSidebar(!props.showSidebar);
+    props.setShowSidebar(!props.showSidebar);
     }
     
     const mapPaths = (options) => {
@@ -64,6 +58,7 @@ const Sidebar = props => {
       <nav className={styles.sidebar}>
       <header className={`${styles.header}`}>
         <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}>X</span>
+        <HamburgerIcon />
         <h1><Link to="/" className={`${styles.hoveringButton}`}>DAVIDHO</Link></h1>
       </header>
       <section className={`${styles.section}`} style={visibility.insideElement}>
