@@ -25,7 +25,7 @@ const CarouselBackground = (props) => {
   const mappedImages = () => {
     return routes.map(({title, path, image}, i) => {
       return (
-        <div className={styles.carousel__image} >
+        <div className={styles.carousel__image} key={i}>
 
           <img className={styles.carousel__imageItem} alt={title} src={image} />
           <Link to={path} className={styles.link}/>

@@ -6,7 +6,7 @@ import AWS from 'aws-sdk';
 
 const Gallery = (props, { mappedImages, title }) => {
 
-  const currPage = window.location.href;
+  // const currPage = window.location.href;
   
   // Will get the current path || url with "/" for example, "/corporate, /fashion, etc"
   const currentPath = props.mappedImages.match.path;
@@ -50,7 +50,7 @@ const Gallery = (props, { mappedImages, title }) => {
 
       <div className={styles.sidegallery}>
 
-        {/* <GalleryData /> */}
+        <GalleryData imageLength={imageLength} fetchCategory={fetchCategory} />
 
       </div>
     </div>
