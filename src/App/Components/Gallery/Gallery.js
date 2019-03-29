@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Gallery.module.scss';
-import GalleryData from './GalleryData';
-import config from '../../assets/config';
-import AWS from 'aws-sdk';
+// import GalleryData from './GalleryData';
 
 const Gallery = (props) => {
+
+  console.log(props.mappedImages);
+
+  const mappedImages = props.mappedImages
+
+  const mapImages = (images) => {
+    return mappedImages.map(({image}, i) => {
+      return (
+        <div className={styles.sideGalleryItems} key={i}>
+          <img alt='Category' src={image} />
+        </div>
+      )
+    })
+  }
 
   return (
     <div className={styles.gallery}>
@@ -13,10 +25,7 @@ const Gallery = (props) => {
 
       <div className={styles.sidegallery}>
 
-        <GalleryData 
-          imageLength={props.imageLength} 
-          fetchCategory={props.title}
-          />
+          {mapImages()}
 
       </div>
     </div>
