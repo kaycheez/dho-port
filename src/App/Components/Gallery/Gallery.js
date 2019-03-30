@@ -1,15 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import styles from './Gallery.module.scss';
-// import GalleryData from './GalleryData';
+import config from '../../assets/config';
+import AWS from 'aws-sdk';
 
 const Gallery = (props) => {
+  console.log(props)
 
-  console.log(props.mappedImages);
+  const [images, setImages] = useState([])
+  
+  useEffect(() => {
+    let currentPage = window.location.href;
+    let path = currentPage.substring(22, currentPage.length);
+    retrieveImages(path);
 
-  const mappedImages = props.mappedImages
+
+  }, [props.location.pathname]);
+  
+  const retrieveImages = async (path) => {
+
+    AWS.config.update({
+      accessKeyId: config.access,
+      secretAccessKey: config.secret,
+      region: 'us-west-1'
+    })
+
+    await new AWS.S3().listObjectsV2({
+      Bucket: 'visualsbydavidhophotos',
+      Prefix: path,
+    }, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        setImages(
+          data.Contents.slice(1).map((image) => {
+            return `https://s3-us-west-1.amazonaws.com/visualsbydavidhophotos/${image.Key}`
+          })
+        )
+      }
+    });
+  };
 
   const mapImages = (images) => {
-    return mappedImages.map(({image}, i) => {
+    return images.map((image, i) => {
       return (
         <div className={styles.sideGalleryItems} key={i}>
           <img alt='Category' src={image} />
@@ -18,6 +50,7 @@ const Gallery = (props) => {
     })
   }
 
+
   return (
     <div className={styles.gallery}>
 
@@ -25,8 +58,7 @@ const Gallery = (props) => {
 
       <div className={styles.sidegallery}>
 
-          {mapImages()}
-
+        {mapImages(images)}
       </div>
     </div>
   )
