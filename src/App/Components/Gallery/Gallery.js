@@ -1,18 +1,18 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Gallery.module.scss';
 import config from '../../assets/config';
 import AWS from 'aws-sdk';
+import Subgallery from './Subgallery';
 
 const Gallery = (props) => {
-  console.log(props)
 
   const [images, setImages] = useState([])
   
   useEffect(() => {
     let currentPage = window.location.href;
     let path = currentPage.substring(22, currentPage.length);
-    retrieveImages(path);
-
+    
+    retrieveImages(path)
 
   }, [props.location.pathname]);
   
@@ -40,25 +40,16 @@ const Gallery = (props) => {
     });
   };
 
-  const mapImages = (images) => {
-    return images.map((image, i) => {
-      return (
-        <div className={styles.sideGalleryItems} key={i}>
-          <img alt='Category' src={image} />
-        </div>
-      )
-    })
-  }
-
 
   return (
     <div className={styles.gallery}>
 
-      <div className={styles.header}>{props.title}</div>
+      {/* <div className={styles.header}>{props.title}</div> */}
 
       <div className={styles.sidegallery}>
 
-        {mapImages(images)}
+          <Subgallery images={images} />
+
       </div>
     </div>
   )

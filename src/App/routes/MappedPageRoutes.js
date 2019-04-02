@@ -10,18 +10,17 @@ const mappedPageRoutes = (props) => {
   let title = path.substring(0, 1).toUpperCase() + path.substring(1, path.length);
 
   return (
-
-    <Switch>
-        <Route
-          exact
-          path={`/`}
-          render={() => <CarouselBackground sidebar={props.sidebar}/>}
-        />
-        <Route
-          path={`/${path}`}
-          render={(properties) => <Gallery {...properties} title={title} />}
-        />
-    </Switch>
+      <Switch>
+          <Route
+            exact
+            path={`/`}
+            render={() => <CarouselBackground sidebar={props.sidebar}/>}
+          />
+          <Route
+            path={`/${path}`}
+            render={(properties) => <Gallery {...properties} title={title} />}
+          />
+      </Switch>
   )
 }
 

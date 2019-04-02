@@ -1,3 +1,12 @@
+// @mixin spin {
+//     grid-column: gallery-start / gallery-end;
+//     height: 100vh;
+//     width: 100%;
+//     background: white;
+//     position: absolute;
+//     z-index: 1000;
+// }
+
 .gallery {
     height: 100vh;
     width: 100vw;
@@ -32,7 +41,7 @@
     justify-self: center;
     margin-top: .4rem;
     display: inline-block;
-    animation: fadeIn 3s;
+    // animation: fadeIn 3s;
 
     img {
         width: 100%;
@@ -51,7 +60,31 @@
     }
 }
 
+// .spinner {
+//     @include spin;
+
+// }
+
+// .noSpinner {
+//     @include spin;
+
+//     animation: fadeOut 2s both;
+// }
+
+.noLoadedImages {
+    opacity: 0
+}
+
+.loadedImages {
+    opacity: 1
+}
+
 @keyframes fadeIn {
     0% {opacity: 0}
     100% {opacity: 1}
 }
+
+// @keyframes fadeOut {
+//     0% {opacity: 1}
+//     100% {opacity: 0}
+// }
