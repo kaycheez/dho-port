@@ -16,7 +16,7 @@ $margin: .3em;
     height: 3px;
     width: 100%;
     margin: 5px 0px;
-    transition: all ease .2s;
+    transition: all cubic-bezier(0.51,-0.02, 0.43, 1.66) .2s;
   }
 
   &.isActive {
