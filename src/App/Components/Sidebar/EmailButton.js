@@ -25,13 +25,13 @@ const EmailButton = () => {
   }
 
   const displayCopiedMessage = () => {
-    
+
   }
 
 
   return (
     <button className={`${styles.hoveringButton}`} onClick={() => copyEmailToClipboard()}>
-      Email
+      Contact
     </button>
   )
 }
