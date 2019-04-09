@@ -1,0 +1,47 @@
+@import '../../scss/_variables.scss';
+$margin: .3em;
+
+.hamburger {
+  position: relative;
+  display: block;
+  width: 1.5em;
+
+  &::before, 
+  &::after,
+  & span {
+    background-color: $primary-color;
+    border-radius: .2em;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    margin: 5px 0px;
+    transition: all cubic-bezier(0.51,-0.02, 0.43, 1.66) .2s;
+  }
+
+  &.isActive {
+
+    &::before {
+      transform: 
+        translate(-.31em,.13em)
+        rotate(-45deg)
+        scaleX(.7);
+    }
+    &::after {
+      transform: 
+        translate(-.31em,-.13em)
+        rotate(45deg)
+        scaleX(.7);
+    }
+  }
+
+  // & span {
+  //   height: .22em;
+  // }
+}
+
+@keyframes topToArrow {
+  0% {
+
+  }
+}
