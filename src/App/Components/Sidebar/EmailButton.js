@@ -3,8 +3,8 @@ import emailIcon from '../../assets/icons/email.svg'
 import styles from './Sidebar.module.scss';
 
 const EmailButton = () => {
-  const copyEmailToClipboard = (text) => {
-    let textNode = document.createTextNode(text);
+  const copyEmailToClipboard = () => {
+    let textNode = document.createTextNode('visualsbydavidho@gmail.com');
 
     document.body.appendChild(textNode);
     if (document.body.createTextRange) {
@@ -24,10 +24,14 @@ const EmailButton = () => {
     textNode.remove();
   }
 
+  const displayCopiedMessage = () => {
+    
+  }
+
 
   return (
-    <button className={`${styles.hoveringButton}`} onClick={() => copyEmailToClipboard('visualsbydavidho@gmail.com')}>
-      <img src={emailIcon} alt='Email icon'/>
+    <button className={`${styles.hoveringButton}`} onClick={() => copyEmailToClipboard()}>
+      Email
     </button>
   )
 }
