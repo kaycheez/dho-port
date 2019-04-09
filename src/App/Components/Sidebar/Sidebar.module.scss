@@ -16,10 +16,12 @@
   z-index: 1000;
   display: flex;
   flex-direction: column;
+  font-family: 'Lato';
 
   
   .header {
     display: flex;
+    align-items: center;
     
     & h1 {
       font-size: 2em;
@@ -31,7 +33,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-top: 2em;
+    margin: 2.5em 2.2em;
 
     .categoryContainer {
       display: flex;
@@ -63,21 +65,21 @@
   }
 }
 
-// .hoveringButton {
-//   display: flex;
-//   cursor: pointer;
-//   transition: all .2s;
-//   text-shadow: rgba(0, 0, 0, .2) 0em 0em .5em;
+.hoveringButton {
+  display: flex;
+  cursor: pointer;
+  transition: all .2s;
+  text-shadow: rgba(0, 0, 0, .2) 0em 0em .5em;
 
-//   &:hover {
-//     transform: scale(1.1);
-//     text-shadow: rgba(0, 0, 0, .2) 0m .1em 1em;
+  &:hover {
+    transform: scale(1.1);
+    text-shadow: rgba(0, 0, 0, .2) 0m .1em 1em;
     
-//     h1 {
-//       transform: scale(1.01)
-//     }
-//   }
-// }
+    h1 {
+      transform: scale(1.01)
+    }
+  }
+}
 
 @keyframes fazeIn {
   0%   { opacity: 0; }
