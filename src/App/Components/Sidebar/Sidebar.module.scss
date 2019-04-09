@@ -10,8 +10,7 @@
   color: $primary-color;
   box-sizing: border-box;
   height: 100%;
-  padding: 2em 2em;
-  // position: absolute;
+  padding: 2.9em;
   position: fixed;
   bottom: 0;
   z-index: 1000;
@@ -22,29 +21,37 @@
   .header {
     display: flex;
     
-
+    & h1 {
+      font-size: 2em;
+      margin-left: .25em;
+    }
   }
   
   .section {
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin-top: 2em;
 
     .categoryContainer {
       display: flex;
       flex-direction: column;
-    
+      
       .category {
-
+        
         display: block;
         cursor: pointer;
       }
-    
+      
       .categoryItems {
+        padding: 1em;
         display: flex;
         animation: fazeIn .5s ease-in .1s;
         animation-fill-mode: backwards;
         flex-direction: column;
+        * + * {
+          margin-top: .5em;
+        }
       }
     }
   }
@@ -52,38 +59,31 @@
   .footer {
     font-size: 1.2em;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
   }
 }
 
-.hoveringButton {
-  display: flex;
-  cursor: pointer;
-  transition: all .2s;
-  text-shadow: rgba(0, 0, 0, .2) 0em 0em .5em;
+// .hoveringButton {
+//   display: flex;
+//   cursor: pointer;
+//   transition: all .2s;
+//   text-shadow: rgba(0, 0, 0, .2) 0em 0em .5em;
 
-  &:hover {
-    transform: scale(1.1);
-    text-shadow: rgba(0, 0, 0, .2) 0m .1em 1em;
+//   &:hover {
+//     transform: scale(1.1);
+//     text-shadow: rgba(0, 0, 0, .2) 0m .1em 1em;
     
-    h1 {
-      transform: scale(1.01)
-    }
-  }
-}
+//     h1 {
+//       transform: scale(1.01)
+//     }
+//   }
+// }
 
 @keyframes fazeIn {
   0%   { opacity: 0; }
   100% { opacity: 1; }
 }
 
-@keyframes fazeOut {
-  0%   { opacity: 1; }
-
-  99% { opacity: 0; }
-
-  100% { display: none; }
-}
 
 @keyframes slideIn {
   to {

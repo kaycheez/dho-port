@@ -9,8 +9,7 @@ import HamburgerIcon from './HamburgerIcon';
 const Sidebar = props => {
   
   const [visibility, setVisibility] = useState({
-    insideElement: { display: 'none' },
-    sidebarBorder: { backgroundColor: 'rgba(0, 0, 0, 0)'}
+    insideElement: { display: 'none' }
   })
 
 
@@ -57,9 +56,8 @@ const Sidebar = props => {
     return (
       <nav className={styles.sidebar}>
       <header className={`${styles.header}`}>
-        <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}>X</span>
-        <HamburgerIcon />
-        <h1><Link to="/" className={`${styles.hoveringButton}`}>DAVIDHO</Link></h1>
+        <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}><HamburgerIcon showSidebar={props.showSidebar}/></span>
+        <h1><Link to="/" className={`${styles.hoveringButton}`}>David Ho </Link></h1>
       </header>
       <section className={`${styles.section}`} style={visibility.insideElement}>
         <button className={styles.categoryContainer}>
