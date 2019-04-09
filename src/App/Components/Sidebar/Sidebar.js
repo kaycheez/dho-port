@@ -50,6 +50,8 @@ const Sidebar = props => {
         
       props.setShowSidebar(!props.showSidebar);
     }
+
+    console.log(props.showSidebar)
     
     const mapPaths = (options) => {
       return options.map((route, i) => {

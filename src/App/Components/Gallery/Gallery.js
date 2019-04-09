@@ -14,7 +14,7 @@ const Gallery = (props) => {
     
     retrieveImages(path)
 
-  }, [props.location.pathname]);
+  });
   
   const retrieveImages = async (path) => {
 
