@@ -1,5 +1,4 @@
 import React from 'react';
-import emailIcon from '../../assets/icons/email.svg'
 import styles from './Sidebar.module.scss';
 
 const EmailButton = () => {
