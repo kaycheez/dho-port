@@ -46,12 +46,13 @@ const Sidebar = props => {
     const mapPaths = (options) => {
       return options.map((route, i) => {
         return (
+          <div key={i} className={`${styles.categoryItem}`}>
             <NavLink 
-              key={i}
               className={`${styles.hoveringButton} ${styles.hoveringButtonList}`}
               activeClassName={`${styles.hoveringButtonActive}`}
               to={route.path} 
             >{route.title}</NavLink>
+          </div>
         )
       })
     }
