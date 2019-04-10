@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from './Gallery.module.scss';
+import { SlidesContext } from '../../Context/SlidesContext';
 
 const Subgallery = (props) => {
 
+  const {setShowSlides} = useContext(SlidesContext);
   let galleryElement;
 
   // Once all pictures have been completed, return true
@@ -22,7 +24,7 @@ const Subgallery = (props) => {
     let picIndex = event.currentTarget.dataset.index;
     let picArray = props.images;
     props.setSlidesArr(picArray.splice(picIndex).concat(picArray.splice(0, picIndex)));
-    props.setShowSlides(true);
+    setShowSlides(true);
   }
 
   const mapImages = () => {

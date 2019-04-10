@@ -1,25 +1,25 @@
 import React from 'react';
 import styles from './Slideshow.module.scss';
 import Slider from 'react-slick';
-import { NextArrow, PrevArrow } from '../Carousel/Arrows';
+// import { NextArrow, PrevArrow } from '../Carousel/Arrows';
 
 const Slideshow = (props) => {
 
-  const nextArrow = () => {
-    return (
-      <div className={styles.nextArrow}>
-        <NextArrow />
-      </div>
-    )
-  }
+  // const nextArrow = () => {
+  //   return (
+  //     <div className={styles.nextArrow}>
+  //       <NextArrow />
+  //     </div>
+  //   )
+  // }
 
-  const prevArrow = () => {
-    return (
-      <div className={styles.prevArrow}>
-        <PrevArrow />
-      </div>
-    )
-  }
+  // const prevArrow = () => {
+  //   return (
+  //     <div className={styles.prevArrow}>
+  //       <PrevArrow />
+  //     </div>
+  //   )
+  // }
 
   const settings = {
     fade: true,
@@ -46,14 +46,14 @@ const Slideshow = (props) => {
 
   return (
     <div className={styles.slideshowContainer} >
-      <button className={styles.goBack} onClick={() => props.handleClick(props.path)}>Go back</button>
+      <button className={styles.goBack} onClick={() => props.goBack(props.path)}>Go back</button>
       
       <Slider {...settings} >
         
         {mapSlides()}
      
       </Slider>
-      
+
     </div>
   )
 

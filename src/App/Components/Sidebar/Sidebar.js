@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './Sidebar.module.scss';
 import { Link, withRouter } from 'react-router-dom';
 import routes from '../../routes/routes';
 import EmailButton from './EmailButton';
 import IGButton from './IGButton';
 import HamburgerIcon from './HamburgerIcon';
+import { SlidesContext } from '../../Context/SlidesContext';
 
 const Sidebar = props => {
   
+  const { setShowSlides } = useContext(SlidesContext);
+
   const [visibility, setVisibility] = useState({
     insideElement: { display: 'none' }
   })
@@ -47,7 +50,7 @@ const Sidebar = props => {
     const mapPaths = (options) => {
       return options.map((route, i) => {
         return (
-          <li key={i} className={`${styles.hoveringButton}`}>
+          <li key={i} className={`${styles.hoveringButton}`} onClick={() => setShowSlides(false)}>
             <Link to={route.path} >{route.title}</Link>
           </li>
         )

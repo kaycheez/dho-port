@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './Gallery.module.scss';
 import config from '../../assets/config';
 import AWS from 'aws-sdk';
 import Subgallery from './Subgallery';
 import Slideshow from '../Slideshow/Slideshow';
+import { SlidesContext } from '../../Context/SlidesContext';
 
 const Gallery = (props) => {
 
+  const {showSlides, setShowSlides} = useContext(SlidesContext);
+
   // Has the array of images from S3 to display in gallery
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState([]);
   // True if all images have finished loading for gallery
   const [loading, setLoading] = useState(false);
-  // Show the slideshow if true
-  const [showSlides, setShowSlides] = useState(false);
   // Set the picture in which the slideshow will start with
   const [slidesArr, setSlidesArr] = useState([]);
 
   let currentPage = window.location.href;
   let path = currentPage.substring(22, currentPage.length);
-  
-  useEffect(() => {
-    
-    retrieveImages(path)
 
+  useEffect(() => {
+    retrieveImages(path)
+    localStorage.setItem('data', JSON.stringify(images))
   }, [props.location.pathname]);
   
   const retrieveImages = async (path) => {
@@ -48,7 +48,7 @@ const Gallery = (props) => {
   };
 
   // Set showSlides to false, hiding slides, and calls AWS for images again
-  const handleClick = (path) => {
+  const goBack = (path) => {
     setShowSlides(false);
     retrieveImages(path);
   }
@@ -59,16 +59,15 @@ const Gallery = (props) => {
         showSlides 
         ? 
           <Slideshow 
-            slidesArr={slidesArr} 
-            handleClick={handleClick} 
-            path={path} />
+            slidesArr={slidesArr} // Pass in the array of images it'll map out
+            goBack={goBack}  // This is the back button
+            path={path} /> // Path required to fetch images from AWS again
         :
           <Subgallery 
-            images={images} 
-            setShowSlides={setShowSlides}
-            setSlidesArr={setSlidesArr}
-            setLoading={setLoading}
-            loading={loading} />
+            images={images}  // Array of images for masonry gallery to map
+            setSlidesArr={setSlidesArr} // Sets the first image in array for slideshow
+            setLoading={setLoading} // Function to set boolean for images loaded
+            loading={loading} /> // Component true if all images of finished loading
       }
     </div>
   )
