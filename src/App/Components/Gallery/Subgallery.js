@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Gallery.module.scss';
-import Slider from 'react-slick';
 
 const Subgallery = (props) => {
-
-  const [loading, setLoading] = useState(false);
-  const [click, setClick] = useState(false);
 
   let galleryElement;
 
@@ -21,15 +17,13 @@ const Subgallery = (props) => {
     return true;
   }
 
+  // Gets the index from picture to start the <Slideshow />
   const clickHandler = (event) => {
     let picIndex = event.currentTarget.dataset.index;
     let picArray = props.images;
-    
-    let slideShowArray = picArray.splice(picIndex).concat(picArray.splice(0, picIndex));
-    console.log(slideShowArray);
-
+    props.setSlidesArr(picArray.splice(picIndex).concat(picArray.splice(0, picIndex)));
+    props.setShowSlides(true);
   }
-
 
   const mapImages = () => {
     return props.images.map((image, i) => {
@@ -38,31 +32,28 @@ const Subgallery = (props) => {
               <img 
                 alt='Category' 
                 src={image} 
-                className={!loading ? styles.loadedImages : styles.noLoadedImages}
+                className={!props.loading ? styles.loadedImages : styles.noLoadedImages}
                 onLoad={() => handleStateChange(galleryElement)}
                 key={i}
               />
           </div>
-
       )
     })
   }
 
   // Once all pictures have been completed, set state to false
   const handleStateChange = (galleryElement) => {
-    setLoading(!imagesLoaded(galleryElement))
+    props.setLoading(!imagesLoaded(galleryElement))
   }
 
   return (
     <div ref={element => galleryElement = element}>
-
-      <div className={!loading ? styles.loadedImages : styles.noLoadedImages} >
+      <div className={!props.loading ? styles.loadedImages : styles.noLoadedImages} >
         {mapImages()}
       </div>
 
     </div>
   )
-
 }
 
 export default Subgallery;

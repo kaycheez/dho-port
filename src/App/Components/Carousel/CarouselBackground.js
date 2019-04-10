@@ -28,7 +28,7 @@ const CarouselBackground = (props) => {
         <div className={styles.carousel__image} key={i}>
 
           <img className={styles.carousel__imageItem} alt={title} src={image} />
-          <Link to={path} className={styles.link}/>
+          <Link to={path} className={styles.link} />
           <h1 className={styles.carousel__imageCaption}>{title}</h1>
   
         </div>
