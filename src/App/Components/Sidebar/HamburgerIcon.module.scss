@@ -10,7 +10,7 @@ $margin: .3em;
   &::before, 
   &::after,
   & span {
-    background-color: $primary-color;
+    background-color: $primary-color-gray;
     border-radius: .2em;
     content: '';
     display: block;
