@@ -5,11 +5,20 @@ $margin: .3em;
   position: relative;
   display: block;
   width: 1.5em;
+  margin-top: .35em;
+
+  &.isDark {
+    &::before, 
+    &::after,
+    & span {
+      background-color: $secondary-color-gray;
+    }
+  }
 
   &::before, 
   &::after,
   & span {
-    background-color: $primary-color;
+    background-color: $primary-color-gray;
     border-radius: .2em;
     content: '';
     display: block;
