@@ -10,7 +10,7 @@ const Sidebar = props => {
   
   const [visibility, setVisibility] = useState({
     insideElement: { display: 'flex' },
-    gridColor: null
+    isDark: null
   })
 
 
@@ -22,13 +22,10 @@ const Sidebar = props => {
       if (!props.showSidebar) {
         toggleSidebar();
       }
-      setVisibility({ gridColor: {color: '#696e74'}})
+      setVisibility({ isDark: styles.isDark})
     }
   }, [props.location.pathname])
 
-  const addClassIsHome = () => {
-    
-  }
 
   // menu/back button functionality
   const handleClick = () => {
@@ -64,9 +61,9 @@ const Sidebar = props => {
     }
       
     return (
-      <nav className={styles.sidebar} style={visibility.gridColor}>
+      <nav className={`${styles.sidebar} ${visibility.isDark}`}>
       <header className={`${styles.header}`}>
-        <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}><HamburgerIcon showSidebar={props.showSidebar}/></span>
+        <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}><HamburgerIcon path={props.location.pathname} showSidebar={props.showSidebar}/></span>
         <Link to="/" className={`${styles.hoveringButton}`}>
           <h1 className={`${styles.title}`}>
             <span>Visuals By</span>

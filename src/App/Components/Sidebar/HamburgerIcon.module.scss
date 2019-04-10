@@ -7,6 +7,14 @@ $margin: .3em;
   width: 1.5em;
   margin-top: .35em;
 
+  &.isDark {
+    &::before, 
+    &::after,
+    & span {
+      background-color: $secondary-color-gray;
+    }
+  }
+
   &::before, 
   &::after,
   & span {
