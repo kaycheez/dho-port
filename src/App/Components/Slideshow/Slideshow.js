@@ -45,10 +45,15 @@ const Slideshow = (props) => {
   }
 
   return (
-    <div>
+    <div className={styles.slideshowContainer} >
+      <button className={styles.goBack} onClick={() => props.handleClick(props.path)}>Go back</button>
+      
       <Slider {...settings} >
+        
         {mapSlides()}
+     
       </Slider>
+      
     </div>
   )
 

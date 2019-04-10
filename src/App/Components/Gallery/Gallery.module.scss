@@ -40,32 +40,6 @@
         cursor: pointer;
     }
 }
-
-.slideshowContainer {
-    grid-column: gallery-start / gallery-end;
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
-.show {
-    opacity: 1;
-}
-
-.hidden {
-    opacity: 0;
-    visibility: hidden
-}
-
-.goBack {
-    position: absolute;
-    font-size: 3rem;
-    z-index: 10000;
-    cursor: pointer;
-    margin-top: 2rem;
-    bottom: 5rem;
-    left: -27rem;
-}
  
 .noLoadedImages {
     opacity: 0;

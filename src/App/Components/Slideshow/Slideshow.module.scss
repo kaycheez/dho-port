@@ -1,3 +1,10 @@
+.slideshowContainer {
+    grid-column: gallery-start / gallery-end;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
 .slideShow {
     position: relative;
     justify-self: center;
@@ -11,6 +18,16 @@
         height: 100%;
         object-fit: contain;
     }
+}
+
+.goBack {
+    position: absolute;
+    font-size: 3rem;
+    z-index: 10000;
+    cursor: pointer;
+    margin-top: 2rem;
+    bottom: 5rem;
+    left: -27rem;
 }
 
 .nextArrow {

@@ -17,7 +17,7 @@ const Gallery = (props) => {
   const [slidesArr, setSlidesArr] = useState([]);
 
   let currentPage = window.location.href;
-    let path = currentPage.substring(22, currentPage.length);
+  let path = currentPage.substring(22, currentPage.length);
   
   useEffect(() => {
     
@@ -53,29 +53,25 @@ const Gallery = (props) => {
     retrieveImages(path);
   }
 
-  if (showSlides) {
-    return (
-      <div className={styles.gallery}>
-        <div className={styles.slideshowContainer}>
-          <button className={styles.goBack} onClick={() => handleClick(path)}>Go back</button>
-          <Slideshow slidesArr={slidesArr} />
-        </div>
-      </div>
-    )
-  } else if (!showSlides) {
-      return (
-        <div className={styles.gallery}>
-          <div className={styles.sidegallery}>
-            <Subgallery 
-              images={images} 
-              setShowSlides={setShowSlides}
-              setSlidesArr={setSlidesArr}
-              setLoading={setLoading}
-              loading={loading} />
-          </div>
-        </div>
-      )
-  }
+  return (
+    <div className={styles.gallery}>
+      {
+        showSlides 
+        ? 
+          <Slideshow 
+            slidesArr={slidesArr} 
+            handleClick={handleClick} 
+            path={path} />
+        :
+          <Subgallery 
+            images={images} 
+            setShowSlides={setShowSlides}
+            setSlidesArr={setSlidesArr}
+            setLoading={setLoading}
+            loading={loading} />
+      }
+    </div>
+  )
 
 }
 

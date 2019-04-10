@@ -47,11 +47,14 @@ const Subgallery = (props) => {
   }
 
   return (
-    <div ref={element => galleryElement = element}>
-      <div className={!props.loading ? styles.loadedImages : styles.noLoadedImages} >
-        {mapImages()}
+    <div className={styles.sidegallery}>
+      <div ref={element => galleryElement = element}>
+        <div className={!props.loading ? styles.loadedImages : styles.noLoadedImages} >
+         
+          {mapImages()}
+        
+        </div>
       </div>
-
     </div>
   )
 }
