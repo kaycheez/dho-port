@@ -11,7 +11,7 @@ const CarouselBackground = (props) => {
     fade: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 3700,
+    autoplaySpeed: 4000,
     pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
