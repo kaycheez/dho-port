@@ -15,10 +15,11 @@ const Gallery = (props) => {
   const [showSlides, setShowSlides] = useState(false);
   // Set the picture in which the slideshow will start with
   const [slidesArr, setSlidesArr] = useState([]);
+
+  let currentPage = window.location.href;
+    let path = currentPage.substring(22, currentPage.length);
   
   useEffect(() => {
-    let currentPage = window.location.href;
-    let path = currentPage.substring(22, currentPage.length);
     
     retrieveImages(path)
 
@@ -46,16 +47,22 @@ const Gallery = (props) => {
     });
   };
 
+  // Set showSlides to false, hiding slides, and calls AWS for images again
+  const handleClick = (path) => {
+    setShowSlides(false);
+    retrieveImages(path);
+  }
+
   if (showSlides) {
     return (
-      <div className={styles.gallery} >
+      <div className={styles.gallery}>
         <div className={styles.slideshowContainer}>
-          <span className={styles.goBack} onClick={() => setShowSlides(false)}>Go back</span>
+          <button className={styles.goBack} onClick={() => handleClick(path)}>Go back</button>
           <Slideshow slidesArr={slidesArr} />
         </div>
       </div>
     )
-  } else {
+  } else if (!showSlides) {
       return (
         <div className={styles.gallery}>
           <div className={styles.sidegallery}>
@@ -68,7 +75,8 @@ const Gallery = (props) => {
           </div>
         </div>
       )
-    }
+  }
+
 }
 
 export default Gallery
