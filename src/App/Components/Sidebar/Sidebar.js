@@ -9,7 +9,8 @@ import HamburgerIcon from './HamburgerIcon';
 const Sidebar = props => {
   
   const [visibility, setVisibility] = useState({
-    insideElement: { display: 'flex' }
+    insideElement: { display: 'flex' },
+    gridColor: null
   })
 
 
@@ -21,8 +22,13 @@ const Sidebar = props => {
       if (!props.showSidebar) {
         toggleSidebar();
       }
+      setVisibility({ gridColor: {color: '#696e74'}})
     }
   }, [props.location.pathname])
+
+  const addClassIsHome = () => {
+    
+  }
 
   // menu/back button functionality
   const handleClick = () => {
@@ -58,7 +64,7 @@ const Sidebar = props => {
     }
       
     return (
-      <nav className={styles.sidebar}>
+      <nav className={styles.sidebar} style={visibility.gridColor}>
       <header className={`${styles.header}`}>
         <span className={`${styles.hoveringButton}`} onClick={(() => handleClick())}><HamburgerIcon showSidebar={props.showSidebar}/></span>
         <Link to="/" className={`${styles.hoveringButton}`}>
