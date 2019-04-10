@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './Gallery.module.scss';
 import { SlidesContext } from '../../Context/SlidesContext';
 
 const Subgallery = (props) => {
 
-  const {setShowSlides} = useContext(SlidesContext);
+  const { setShowSlides } = useContext(SlidesContext);
   let galleryElement;
 
   // Once all pictures have been completed, return true

@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState } from 'react';
 import styles from './App.module.scss';
 import Sidebar from './Components/Sidebar/Sidebar';
 import MappedPageRoutes from './routes/MappedPageRoutes';
