@@ -8,7 +8,7 @@ import { SlidesContext } from '../../Context/SlidesContext';
 
 const Gallery = (props) => {
 
-  const {showSlides, setShowSlides} = useContext(SlidesContext);
+  const { showSlides, setShowSlides, path } = useContext(SlidesContext);
 
   // Has the array of images from S3 to display in gallery
   const [images, setImages] = useState([]);
@@ -16,15 +16,19 @@ const Gallery = (props) => {
   const [loading, setLoading] = useState(false);
   // Set the picture in which the slideshow will start with
   const [slidesArr, setSlidesArr] = useState([]);
-
-  let currentPage = window.location.href;
-  let path = currentPage.substring(22, currentPage.length);
+  // The URL is used to compare with new URL. If !== then setShowSlides to false
+  const [currentUrl, setCurrentUrl] = useState();
 
   useEffect(() => {
     retrieveImages(path)
-    localStorage.setItem('data', JSON.stringify(images))
-  }, [props.location.pathname]);
-  
+    setCurrentUrl(path);
+
+    if (`/${currentUrl}` !== props.location.pathname) {
+      setShowSlides(false);
+      retrieveImages(path);
+    }
+  }, [window.location.href]);
+
   const retrieveImages = async (path) => {
     AWS.config.update({
       accessKeyId: config.access,
@@ -47,21 +51,20 @@ const Gallery = (props) => {
     });
   };
 
-  // Set showSlides to false, hiding slides, and calls AWS for images again
-  const goBack = (path) => {
+  const goBackToGallery = (path) => {
     setShowSlides(false);
     retrieveImages(path);
   }
 
   return (
+
     <div className={styles.gallery}>
       {
         showSlides 
         ? 
           <Slideshow 
-            slidesArr={slidesArr} // Pass in the array of images it'll map out
-            goBack={goBack}  // This is the back button
-            path={path} /> // Path required to fetch images from AWS again
+            slidesArr={slidesArr}
+            goBackToGallery={goBackToGallery} /> // Pass in the array of images it'll map out
         :
           <Subgallery 
             images={images}  // Array of images for masonry gallery to map

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './Slideshow.module.scss';
 import Slider from 'react-slick';
+import { SlidesContext } from '../../Context/SlidesContext';
 // import { NextArrow, PrevArrow } from '../Carousel/Arrows';
 
 const Slideshow = (props) => {
 
+  const { path } = useContext(SlidesContext);
   // const nextArrow = () => {
   //   return (
   //     <div className={styles.nextArrow}>
@@ -46,7 +48,7 @@ const Slideshow = (props) => {
 
   return (
     <div className={styles.slideshowContainer} >
-      <button className={styles.goBack} onClick={() => props.goBack(props.path)}>Go back</button>
+      <button className={styles.goBack} onClick={() => props.goBackToGallery(path)}>Go back</button>
       
       <Slider {...settings} >
         

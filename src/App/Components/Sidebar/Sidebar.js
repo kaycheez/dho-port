@@ -9,7 +9,7 @@ import { SlidesContext } from '../../Context/SlidesContext';
 
 const Sidebar = (props) => {
   
-  const { showSidebar, setShowSidebar, setShowSlides } = useContext(SlidesContext);
+  const { showSidebar, setShowSidebar } = useContext(SlidesContext);
 
   const [visibility, setVisibility] = useState({
     insideElement: { display: 'flex' },
@@ -52,7 +52,7 @@ const Sidebar = (props) => {
     const mapPaths = (options) => {
       return options.map((route, i) => {
         return (
-          <div key={i} className={`${styles.categoryItem}`} onClick={() => setShowSlides(false)}>
+          <div key={i} className={`${styles.categoryItem}`} >
             <NavLink 
               className={`${styles.hoveringButton} ${styles.hoveringButtonList}`}
               activeClassName={`${styles.hoveringButtonActive}`}
