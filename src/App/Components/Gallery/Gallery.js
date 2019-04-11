@@ -1,96 +1,80 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './Gallery.module.scss';
-import GalleryData from './GalleryData';
+import config from '../../assets/config';
+import AWS from 'aws-sdk';
+import Subgallery from './Subgallery';
+import Slideshow from '../Slideshow/Slideshow';
+import { SlidesContext } from '../../Context/SlidesContext';
 
-import fashion from '../../assets/images/fashion.jpg';
-import fashion1 from '../../assets/images/1.jpg';
-import fashion2 from '../../assets/images/2.jpg';
-import fashion3 from '../../assets/images/3.jpg';
-import fashion4 from '../../assets/images/4.jpg';
-import fashion5 from '../../assets/images/5.jpg';
+const Gallery = (props) => {
 
-const Gallery = ({ mappedImages, title }) => {
+  const { showSlides, setShowSlides, path } = useContext(SlidesContext);
 
-  const fashionImages = [
-    {
-      image: fashion4,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion1,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion5,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion5,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion2,
-      name: "Fashion",
-      path: "/"
-    },
-    {
-      image: fashion3,
-      name: "Fashion",
-      path: "/"
-    },
-  ];
+  // Has the array of images from S3 to display in gallery
+  const [images, setImages] = useState([]);
+  // True if all images have finished loading for gallery
+  const [loading, setLoading] = useState(false);
+  // Set the picture in which the slideshow will start with
+  const [slidesArr, setSlidesArr] = useState([]);
+  // The URL is used to compare with new URL. If !== then setShowSlides to false
+  const [currentUrl, setCurrentUrl] = useState();
 
-  // Local variables
-  // const hostPage = 'http://localhost:3001/';
-  // const currPage = window.location.href;
+  useEffect(() => {
+    retrieveImages(path)
+    setCurrentUrl(path);
 
-  // Switch statement to change data in mappedImages
-  // function imageSwitch(currPage) {
-  //     switch(currPage) {
-  //         case hostPage + 'corporate':
-  //             mappedImages = corporateMap;
-  //             title = 'Corporate';
-  //             break;
-  //         case hostPage + 'fashion':
-  //             mappedImages = fashionMap;
-  //             title = 'Fashion';
-  //             break;
-  //         case hostPage + 'events':
-  //             mappedImages = "Events";
-  //             title = 'Events';
-  //             break;
-  //         case hostPage + 'products':
-  //             mappedImages = "Products";
-  //             title = 'Products';
-  //             break;
-  //         default:
-  //             return null;
-  //     }
-  // }
+    if (`/${currentUrl}` !== props.location.pathname) {
+      setShowSlides(false);
+      retrieveImages(path);
+    }
+  }, [window.location.href]);
+
+  const retrieveImages = async (path) => {
+    AWS.config.update({
+      accessKeyId: config.access,
+      secretAccessKey: config.secret,
+      region: 'us-west-1'
+    })
+    await new AWS.S3().listObjectsV2({
+      Bucket: 'visualsbydavidhophotos',
+      Prefix: path,
+    }, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        setImages(
+          data.Contents.slice(1).map((image) => {
+            return `https://s3-us-west-1.amazonaws.com/visualsbydavidhophotos/${image.Key}`
+          })
+        )
+      }
+    });
+  };
+
+  const goBackToGallery = (path) => {
+    setShowSlides(false);
+    retrieveImages(path);
+  }
 
   return (
+
     <div className={styles.gallery}>
-
-      {/* {imageSwitch(currPage)} */}
-
-      <div className={styles.header}>{title}</div>
-
-      <div className={styles.sidegallery}>
-
-        <GalleryData images={fashionImages} />
-
-      </div>
+      {
+        showSlides 
+        ? 
+          <Slideshow 
+            slidesArr={slidesArr}
+            goBackToGallery={goBackToGallery} /> // Pass in the array of images it'll map out
+        :
+          <Subgallery 
+            images={images}  // Array of images for masonry gallery to map
+            setSlidesArr={setSlidesArr} // Sets the first image in array for slideshow
+            setLoading={setLoading} // Function to set boolean for images loaded
+            loading={loading} /> // Component true if all images of finished loading
+      }
     </div>
   )
+
 }
 
 export default Gallery

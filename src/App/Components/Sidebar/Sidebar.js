@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './Sidebar.module.scss';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import routes from '../../routes/routes';
 import EmailButton from './EmailButton';
 import IGButton from './IGButton';
 import HamburgerIcon from './HamburgerIcon';
+import { SlidesContext } from '../../Context/SlidesContext';
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   
+  const { showSidebar, setShowSidebar } = useContext(SlidesContext);
+
   const [visibility, setVisibility] = useState({
     insideElement: { display: 'flex' },
     isDark: null
@@ -19,7 +22,7 @@ const Sidebar = props => {
     if (props.location.pathname === '/') {
       toggleSidebar();
     } else {
-      if (!props.showSidebar) {
+      if (!showSidebar) {
         toggleSidebar();
       }
       setVisibility({ isDark: styles.isDark})
@@ -37,19 +40,19 @@ const Sidebar = props => {
   }
   
   const toggleSidebar = () => {
-    if (props.showSidebar) {
+    if (showSidebar) {
       setVisibility({insideElement: { display: 'none' }});
     } else {
       setVisibility({insideElement: { display: 'flex' }});
     }
         
-    props.setShowSidebar(!props.showSidebar);
+    setShowSidebar(!showSidebar);
     }
-    
+
     const mapPaths = (options) => {
       return options.map((route, i) => {
         return (
-          <div key={i} className={`${styles.categoryItem}`}>
+          <div key={i} className={`${styles.categoryItem}`} >
             <NavLink 
               className={`${styles.hoveringButton} ${styles.hoveringButtonList}`}
               activeClassName={`${styles.hoveringButtonActive}`}
