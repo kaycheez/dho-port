@@ -16,17 +16,10 @@ const Gallery = (props) => {
   const [loading, setLoading] = useState(false);
   // Set the picture in which the slideshow will start with
   const [slidesArr, setSlidesArr] = useState([]);
-  // The URL is used to compare with new URL. If !== then setShowSlides to false
-  const [currentUrl, setCurrentUrl] = useState();
 
   useEffect(() => {
     retrieveImages(path)
-    setCurrentUrl(path);
-
-    if (`/${currentUrl}` !== props.location.pathname) {
-      setShowSlides(false);
-      retrieveImages(path);
-    }
+    setShowSlides(false);
   }, [window.location.href]);
 
   const retrieveImages = async (path) => {
