@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import CarouselBackground from "../Components/Carousel/CarouselBackground";
 import Gallery from "../Components/Gallery/Gallery";
 
-const mappedPageRoutes = (props) => {
+const mappedPageRoutes = () => {
 
   let currentPage = window.location.href;
   let path = currentPage.substring(22, currentPage.length);
@@ -14,7 +14,7 @@ const mappedPageRoutes = (props) => {
           <Route
             exact
             path={`/`}
-            render={() => <CarouselBackground sidebar={props.sidebar}/>}
+            render={() => <CarouselBackground />}
           />
           <Route
             path={`/${path}`}

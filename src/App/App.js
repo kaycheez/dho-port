@@ -10,15 +10,11 @@ const App = () => {
 
   return (
     <div className={styles.app}>
-      <SlidesContext.Provider value={{showSlides, setShowSlides}} >
+      <SlidesContext.Provider value={{showSlides, setShowSlides, showSidebar, setShowSidebar}} >
         
-        <MappedPageRoutes sidebar={showSidebar} showSlides={showSlides} setShowSlides={setShowSlides} />
+        <MappedPageRoutes />
+        <Sidebar />
         
-        <Sidebar 
-          showSidebar={showSidebar}
-          setShowSidebar={setShowSidebar}
-          setShowSlies={setShowSlides}
-        />
       </SlidesContext.Provider>
     </div>
   );

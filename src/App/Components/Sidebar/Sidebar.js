@@ -7,9 +7,9 @@ import IGButton from './IGButton';
 import HamburgerIcon from './HamburgerIcon';
 import { SlidesContext } from '../../Context/SlidesContext';
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   
-  const { setShowSlides } = useContext(SlidesContext);
+  const { showSidebar, setShowSidebar, setShowSlides } = useContext(SlidesContext);
 
   const [visibility, setVisibility] = useState({
     insideElement: { display: 'flex' },
@@ -22,7 +22,7 @@ const Sidebar = props => {
     if (props.location.pathname === '/') {
       toggleSidebar();
     } else {
-      if (!props.showSidebar) {
+      if (!showSidebar) {
         toggleSidebar();
       }
       setVisibility({ isDark: styles.isDark})
@@ -40,13 +40,13 @@ const Sidebar = props => {
   }
   
   const toggleSidebar = () => {
-    if (props.showSidebar) {
+    if (showSidebar) {
       setVisibility({insideElement: { display: 'none' }});
     } else {
       setVisibility({insideElement: { display: 'flex' }});
     }
         
-    props.setShowSidebar(!props.showSidebar);
+    setShowSidebar(!showSidebar);
     }
 
     const mapPaths = (options) => {

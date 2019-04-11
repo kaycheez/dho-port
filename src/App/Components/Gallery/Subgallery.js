@@ -5,6 +5,8 @@ import { SlidesContext } from '../../Context/SlidesContext';
 const Subgallery = (props) => {
 
   const { setShowSlides } = useContext(SlidesContext);
+
+  // Variable used for ref
   let galleryElement;
 
   // Once all pictures have been completed, return true
