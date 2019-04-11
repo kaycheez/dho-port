@@ -7,7 +7,7 @@ const mappedPageRoutes = () => {
 
   let currentPage = window.location.href;
   let path = currentPage.substring(22, currentPage.length);
-  let title = path.substring(0, 1).toUpperCase() + path.substring(1, path.length);
+  // let title = path.substring(0, 1).toUpperCase() + path.substring(1, path.length);
 
   return (
       <Switch>
@@ -18,7 +18,7 @@ const mappedPageRoutes = () => {
           />
           <Route
             path={`/${path}`}
-            render={(properties) => <Gallery {...properties} title={title} />}
+            render={(props) => <Gallery {...props} />}
           />
       </Switch>
   )
