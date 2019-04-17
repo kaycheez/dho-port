@@ -1,36 +1,22 @@
 import React, { useContext } from 'react';
 import styles from './Slideshow.module.scss';
 import Slider from 'react-slick';
+import { NextArrow, PrevArrow } from './SlideshowArrows.js';
 import { SlidesContext } from '../../Context/SlidesContext';
-// import { NextArrow, PrevArrow } from '../Carousel/Arrows';
 
 const Slideshow = (props) => {
 
   const { path } = useContext(SlidesContext);
-  // const nextArrow = () => {
-  //   return (
-  //     <div className={styles.nextArrow}>
-  //       <NextArrow />
-  //     </div>
-  //   )
-  // }
-
-  // const prevArrow = () => {
-  //   return (
-  //     <div className={styles.prevArrow}>
-  //       <PrevArrow />
-  //     </div>
-  //   )
-  // }
 
   const settings = {
     fade: true,
+    infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
     lazyload: true,
-    // nextArrow: nextArrow(),
-    // prevArrow: prevArrow()
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   }
 
   const mapSlides = () => {
@@ -48,7 +34,7 @@ const Slideshow = (props) => {
 
   return (
     <div className={styles.slideshowContainer} >
-      <button className={styles.goBack} onClick={() => props.goBackToGallery(path)}>Go back</button>
+      <h3 className={styles.goBack} onClick={() => props.goBackToGallery(path)}>Go back</h3>
       
       <Slider {...settings} >
         

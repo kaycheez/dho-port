@@ -1,3 +1,6 @@
+@import './SlideshowArrow.module.scss';
+@import '../../scss/_variables.scss';
+
 .slideshowContainer {
     grid-column: gallery-start / gallery-end;
     position: relative;
@@ -21,20 +24,38 @@
 }
 
 .goBack {
+    font-family: 'Lato';
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: $secondary-color-gray;
+    text-shadow: rgba(0, 0, 0, .2) 0em 0em .5em;
     position: absolute;
-    font-size: 3rem;
     z-index: 10000;
     cursor: pointer;
     margin-top: 2rem;
-    bottom: 5rem;
-    left: -27rem;
-}
-
-.nextArrow {
+    bottom: 47vh;
+    left: -24rem;
+    transition: all .3s;
     position: absolute;
+
+    &:hover {
+        transform: scale(1.04);
+    }
 }
 
-.prevArrow {
-    // position: absolute;
-    border: 20px solid red;
+.arrowNext {
+    position: absolute;
+    @include slideshowArrow;
+    left: -4.2vw;
+    bottom: 49vh;
+    z-index: 1000;
+}
+
+.arrowPrev {
+    position: absolute;
+    @include slideshowArrow;
+    transform: scaleX(-1);
+    left: -8.2vw;
+    bottom: 49vh;
+    z-index: 1000;
 }
