@@ -1,10 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './Gallery.module.scss';
-import { SlidesContext } from '../../Context/SlidesContext';
 
 const Subgallery = (props) => {
-
-  const { setShowSlides } = useContext(SlidesContext);
 
   // Variable used for ref
   let galleryElement;
@@ -26,7 +23,7 @@ const Subgallery = (props) => {
     let picIndex = event.currentTarget.dataset.index;
     let picArray = props.images;
     props.setSlidesArr(picArray.splice(picIndex).concat(picArray.splice(0, picIndex)));
-    setShowSlides(true);
+    props.setShowSlides(true);
   }
 
   const mapImages = () => {
