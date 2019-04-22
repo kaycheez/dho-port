@@ -27,10 +27,10 @@ const Subgallery = (props) => {
   }
 
   // Once all pictures have been completed, set state to false
-  // And set the className to mounted
+  // And set the className to show
   const handleStateChange = (galleryElement) => {
     props.setLoading(!imagesLoaded(galleryElement))
-    props.setUnmounting(styles.mounted)
+    props.setHiding(styles.show)
   }
 
   const mapImages = () => {
@@ -54,7 +54,7 @@ const Subgallery = (props) => {
       <div 
         ref={element => galleryElement = element} 
         onLoad={() => handleStateChange(galleryElement)}
-        className={props.unmounting}
+        className={props.hide}
         >
          
         {mapImages()}

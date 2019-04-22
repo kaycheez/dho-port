@@ -51,11 +51,11 @@
     animation: longerFade 1s both;
 }
 
-.mounted {
+.show {
     opacity: 1;
 }
 
-.unmounted {
+.hide {
     opacity: 0;
 }
 

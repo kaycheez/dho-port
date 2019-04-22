@@ -14,13 +14,11 @@ const Gallery = (props) => {
   const [loading, setLoading] = useState(false);
   // Set the picture in which the slideshow will start with
   const [slidesArr, setSlidesArr] = useState([]);
-  
   // Style is unmounted (opacity: 0) and remains until all pictures have loaded up
   // Will go back to style unmounted (opacity: 0) again in useEffect's cleanup when component unmounts
-  const [unmounting, setUnmounting] = useState(styles.unmounted);
+  const [hide, setHiding] = useState(styles.hide);
 
   const currentPage = props.location.pathname;
-
   const path = currentPage.substring(1, currentPage.length);
 
   useEffect(() => {
@@ -29,15 +27,15 @@ const Gallery = (props) => {
 
     return () => {
       console.log('Component is going to unmount');
-      setUnmounting(styles.unmounted);
+      setHiding(styles.hide);
     }
   }, [props.location.pathname]);
 
   const retrieveImages = async (path) => {
 
-    const currPathname = props.location.pathname;
+    // const currPathname = props.location.pathname;
 
-    if (currPathname === props.location.pathname) {
+    // if (currPathname === props.location.pathname) {
 
       AWS.config.update({
         accessKeyId: config.access,
@@ -60,7 +58,7 @@ const Gallery = (props) => {
 
         }
       });
-    }
+    // }
   };
 
   const goBackToGallery = (path) => {
@@ -75,8 +73,9 @@ const Gallery = (props) => {
         showSlides 
         ? 
           <Slideshow 
-            slidesArr={slidesArr}
-            goBackToGallery={goBackToGallery} /> // Pass in the array of images it'll map out
+            slidesArr={slidesArr} // Pass in the array of images it'll map out
+            goBackToGallery={goBackToGallery} 
+            path={path} />
         :
           <Subgallery 
             images={images}  // Array of images for masonry gallery to map
@@ -84,8 +83,8 @@ const Gallery = (props) => {
             setLoading={setLoading} // Function to set boolean for images loaded
             loading={loading} // Component true if all images of finished loading
             setShowSlides={setShowSlides}
-            unmounting={unmounting}
-            setUnmounting={setUnmounting} />
+            hide={hide}
+            setHiding={setHiding} />
       }
     </div>
   )

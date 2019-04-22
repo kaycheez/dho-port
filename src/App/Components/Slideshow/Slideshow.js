@@ -1,12 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './Slideshow.module.scss';
 import Slider from 'react-slick';
 import { NextArrow, PrevArrow } from './SlideshowArrows.js';
-import { SlidesContext } from '../../Context/SlidesContext';
 
 const Slideshow = (props) => {
-
-  const { path } = useContext(SlidesContext);
 
   const settings = {
     fade: true,
@@ -34,7 +31,7 @@ const Slideshow = (props) => {
 
   return (
     <div className={styles.slideshowContainer} >
-      <h3 className={styles.goBack} onClick={() => props.goBackToGallery(path)}>Go back</h3>
+      <h3 className={styles.goBack} onClick={() => props.goBackToGallery(props.path)}>Go back</h3>
       
       <Slider {...settings} >
         
