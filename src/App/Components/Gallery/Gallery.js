@@ -14,8 +14,10 @@ const Gallery = (props) => {
   const [loading, setLoading] = useState(false);
   // Set the picture in which the slideshow will start with
   const [slidesArr, setSlidesArr] = useState([]);
-  // Unmounting the component;
-  const [unmounting, setUnmounting] = useState(styles.mounted);
+  
+  // Style is unmounted (opacity: 0) and remains until all pictures have loaded up
+  // Will go back to style unmounted (opacity: 0) again in useEffect's cleanup when component unmounts
+  const [unmounting, setUnmounting] = useState(styles.unmounted);
 
   const currentPage = props.location.pathname;
 
@@ -24,7 +26,6 @@ const Gallery = (props) => {
   useEffect(() => {
     retrieveImages(path)
     setShowSlides(false);
-    setUnmounting(styles.mounted);
 
     return () => {
       console.log('Component is going to unmount');
@@ -51,15 +52,14 @@ const Gallery = (props) => {
           console.log(err);
         } else {
 
-            setImages(
-              data.Contents.slice(1).map((image) => {
-                return `https://s3-us-west-1.amazonaws.com/visualsbydavidhophotos/${image.Key}`
-              })
-            )
+          setImages(
+            data.Contents.slice(1).map((image) => {
+              return `https://s3-us-west-1.amazonaws.com/visualsbydavidhophotos/${image.Key}`
+            })
+          )
 
         }
       });
-
     }
   };
 
@@ -84,7 +84,8 @@ const Gallery = (props) => {
             setLoading={setLoading} // Function to set boolean for images loaded
             loading={loading} // Component true if all images of finished loading
             setShowSlides={setShowSlides}
-            unmounting={unmounting} />
+            unmounting={unmounting}
+            setUnmounting={setUnmounting} />
       }
     </div>
   )

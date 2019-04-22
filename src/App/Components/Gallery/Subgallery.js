@@ -27,8 +27,10 @@ const Subgallery = (props) => {
   }
 
   // Once all pictures have been completed, set state to false
+  // And set the className to mounted
   const handleStateChange = (galleryElement) => {
     props.setLoading(!imagesLoaded(galleryElement))
+    props.setUnmounting(styles.mounted)
   }
 
   const mapImages = () => {
@@ -46,7 +48,6 @@ const Subgallery = (props) => {
       )
     })
   }
-  console.log(props.unmounting);
 
   return (
     <div className={styles.sidegallery}>
