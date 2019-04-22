@@ -51,6 +51,20 @@
     animation: longerFade 1s both;
 }
 
+.mounted {
+    opacity: 1;
+}
+
+.unmounted {
+    opacity: 0;
+    // animation: fadeOut 1s both;
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1}
+    100% {opacity: 0}
+}
+
 @keyframes longerFade {
     0% {opacity: 0}
     50% {opacity: 0}

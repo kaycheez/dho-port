@@ -14,34 +14,53 @@ const Gallery = (props) => {
   const [loading, setLoading] = useState(false);
   // Set the picture in which the slideshow will start with
   const [slidesArr, setSlidesArr] = useState([]);
-  const currentPage = window.location.href;
-  let path = currentPage.substring(22, currentPage.length);
+  // Unmounting the component;
+  const [unmounting, setUnmounting] = useState(styles.mounted);
+
+  const currentPage = props.location.pathname;
+
+  const path = currentPage.substring(1, currentPage.length);
 
   useEffect(() => {
     retrieveImages(path)
     setShowSlides(false);
+    setUnmounting(styles.mounted);
+
+    return () => {
+      console.log('Component is going to unmount');
+      setUnmounting(styles.unmounted);
+    }
   }, [props.location.pathname]);
 
   const retrieveImages = async (path) => {
-    AWS.config.update({
-      accessKeyId: config.access,
-      secretAccessKey: config.secret,
-      region: 'us-west-1'
-    })
-    await new AWS.S3().listObjectsV2({
-      Bucket: 'visualsbydavidhophotos',
-      Prefix: path,
-    }, (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        setImages(
-          data.Contents.slice(1).map((image) => {
-            return `https://s3-us-west-1.amazonaws.com/visualsbydavidhophotos/${image.Key}`
-          })
-        )
-      }
-    });
+
+    const currPathname = props.location.pathname;
+
+    if (currPathname === props.location.pathname) {
+
+      AWS.config.update({
+        accessKeyId: config.access,
+        secretAccessKey: config.secret,
+        region: 'us-west-1'
+      })
+      await new AWS.S3().listObjectsV2({
+        Bucket: 'visualsbydavidhophotos',
+        Prefix: path,
+      }, (err, data) => {
+        if (err) {
+          console.log(err);
+        } else {
+
+            setImages(
+              data.Contents.slice(1).map((image) => {
+                return `https://s3-us-west-1.amazonaws.com/visualsbydavidhophotos/${image.Key}`
+              })
+            )
+
+        }
+      });
+
+    }
   };
 
   const goBackToGallery = (path) => {
@@ -64,7 +83,8 @@ const Gallery = (props) => {
             setSlidesArr={setSlidesArr} // Sets the first image in array for slideshow
             setLoading={setLoading} // Function to set boolean for images loaded
             loading={loading} // Component true if all images of finished loading
-            setShowSlides={setShowSlides} />
+            setShowSlides={setShowSlides}
+            unmounting={unmounting} />
       }
     </div>
   )

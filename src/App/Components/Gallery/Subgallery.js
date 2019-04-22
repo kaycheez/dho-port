@@ -26,35 +26,38 @@ const Subgallery = (props) => {
     props.setShowSlides(true);
   }
 
-  const mapImages = () => {
-    return props.images.map((image, i) => {
-      return (
-          <div className={styles.sideGalleryItems} key={i} onClick={clickHandler} data-index={i} >
-              <img 
-                alt='Category' 
-                src={image} 
-                className={!props.loading ? styles.loadedImages : styles.noLoadedImages}
-                onLoad={() => handleStateChange(galleryElement)}
-                key={i}
-              />
-          </div>
-      )
-    })
-  }
-
   // Once all pictures have been completed, set state to false
   const handleStateChange = (galleryElement) => {
     props.setLoading(!imagesLoaded(galleryElement))
   }
 
+  const mapImages = () => {
+    return props.images.map((image, i) => {
+      return (
+        <div className={styles.sideGalleryItems} key={i} onClick={clickHandler} data-index={i} >
+            <img 
+              alt='Category' 
+              // onLoad={() => handleStateChange(galleryElement)}
+              src={image} 
+              className={!props.loading ? styles.loadedImages : styles.noLoadedImages}
+              key={i}
+            />
+        </div>
+      )
+    })
+  }
+  console.log(props.unmounting);
+
   return (
     <div className={styles.sidegallery}>
-      <div ref={element => galleryElement = element}>
-        <div className={!props.loading ? styles.loadedImages : styles.noLoadedImages} >
+      <div 
+        ref={element => galleryElement = element} 
+        onLoad={() => handleStateChange(galleryElement)}
+        className={props.unmounting}
+        >
          
-          {mapImages()}
+        {mapImages()}
         
-        </div>
       </div>
     </div>
   )

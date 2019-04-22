@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styles from './HamburgerIcon.module.scss';
+import { SlidesContext } from '../../Context/SlidesContext';
 
 const HamburgerIcon = props => {
+  const { showSidebar } = useContext(SlidesContext);
   const [isDark, setIsDark] = useState(null)
 
   useEffect(() => {
@@ -13,7 +15,7 @@ const HamburgerIcon = props => {
   }, [props.path])
 
   const toggleIcon = () => {
-    if (props.showSidebar) {
+    if (showSidebar) {
       return styles.isActive
     } else {
       return 'null'
